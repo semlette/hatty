@@ -1,0 +1,14 @@
+name: hatty
+version: 0.1.0
+
+authors:
+  -  Andi Semler <andirobinsemler@gmail.com>
+
+crystal: 0.24.1
+
+license: MIT
+
+dependencies:
+  radix:
+    github: luislavena/radix
+    version: ~> 0.3.8

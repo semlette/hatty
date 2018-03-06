@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="js/doc.js"></script>
+  <title>README - </title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li class="current"><a href="index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class=" " data-id="/toplevel" data-name="top level namespace">
+      <a href="toplevel.html">Top Level Namespace</a>
+      
+    </li>
+  
+  <li class="parent " data-id="/Hatty" data-name="hatty">
+      <a href="Hatty.html">Hatty</a>
+      
+        <ul>
+  
+  <li class=" " data-id="/Hatty/Configuration" data-name="hatty::configuration">
+      <a href="Hatty/Configuration.html">Configuration</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Hatty/Handler" data-name="hatty::handler">
+      <a href="Hatty/Handler.html">Handler</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Hatty/Request" data-name="hatty::request">
+      <a href="Hatty/Request.html">Request</a>
+      
+    </li>
+  
+  <li class="parent " data-id="/Hatty/Response" data-name="hatty::response">
+      <a href="Hatty/Response.html">Response</a>
+      
+        <ul>
+  
+  <li class=" " data-id="/Hatty/Response/ExhaustedError" data-name="hatty::response::exhaustederror">
+      <a href="Hatty/Response/ExhaustedError.html">ExhaustedError</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="/Hatty/Server" data-name="hatty::server">
+      <a href="Hatty/Server.html">Server</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1>Hatty</h1>
+
+<p>A library for creating HTTP services in Crystal</p>
+
+<pre><code class='language-crystal'><span class="k">require</span> <span class="s">&quot;hatty&quot;</span>
+
+get <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  response.send_text <span class="s">&quot;Hello there!&quot;</span>
+<span class="k">end</span>
+
+<span class="t">Hatty</span>.start</code></pre>
+
+<h2>Installing</h2>
+
+<p>Add this snippet to your <code>shards.yml</code> file</p>
+
+<pre><code class='language-yml'>dependencies:
+  hatty:
+    github: semlette/hatty</code></pre>
+
+<h2>Usage</h2>
+
+<blockquote>All of the following examples expects that Hatty has been required and started.</blockquote>
+
+<pre><code class='language-crystal'><span class="k">require</span> <span class="s">&quot;hatty&quot;</span>
+
+<span class="c"># ...</span>
+
+<span class="t">Hatty</span>.start</code></pre>
+
+<h3>Listening for requests</h3>
+
+<pre><code class='language-crystal'>get <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  response.send_text <span class="s">&quot;It&#39;s alive!&quot;</span>
+<span class="k">end</span>
+
+post <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  <span class="c"># ...</span>
+<span class="k">end</span>
+
+put <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  <span class="c"># ...</span>
+<span class="k">end</span>
+
+delete <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  <span class="c"># ...</span>
+<span class="k">end</span>
+
+patch <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  <span class="c"># ...</span>
+<span class="k">end</span></code></pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="js/doc.js"></script>
+  <title>Top Level Namespace - </title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class=" current" data-id="/toplevel" data-name="top level namespace">
+      <a href="toplevel.html">Top Level Namespace</a>
+      
+    </li>
+  
+  <li class="parent " data-id="/Hatty" data-name="hatty">
+      <a href="Hatty.html">Hatty</a>
+      
+        <ul>
+  
+  <li class=" " data-id="/Hatty/Configuration" data-name="hatty::configuration">
+      <a href="Hatty/Configuration.html">Configuration</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Hatty/Handler" data-name="hatty::handler">
+      <a href="Hatty/Handler.html">Handler</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Hatty/Request" data-name="hatty::request">
+      <a href="Hatty/Request.html">Request</a>
+      
+    </li>
+  
+  <li class="parent " data-id="/Hatty/Response" data-name="hatty::response">
+      <a href="Hatty/Response.html">Response</a>
+      
+        <ul>
+  
+  <li class=" " data-id="/Hatty/Response/ExhaustedError" data-name="hatty::response::exhaustederror">
+      <a href="Hatty/Response/ExhaustedError.html">ExhaustedError</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="/Hatty/Server" data-name="hatty::server">
+      <a href="Hatty/Server.html">Server</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  Top Level Namespace
+
+</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+
+
+
+
+
+
+
+  <h2>Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#delete%28path%2C%26handler%3AHatty%3A%3AHandler%29-class-method" class="signature"><strong>delete</strong>(path, &handler : Hatty::Handler)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get%28path%3AString%2C%26handler%3AHatty%3A%3AHandler%29-class-method" class="signature"><strong>get</strong>(path : String, &handler : Hatty::Handler)</a>
+        
+          <div class="summary"><p>Listen for <code>GET</code> requests on <em>path</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#get%28resource%2Cheaders%3DHTTP%3A%3AHeaders.new%29-class-method" class="signature"><strong>get</strong>(resource, headers = <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>.<span class="k">new</span>)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#patch%28path%2C%26handler%3AHatty%3A%3AHandler%29-class-method" class="signature"><strong>patch</strong>(path, &handler : Hatty::Handler)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#post%28path%3AString%2C%26handler%3AHatty%3A%3AHandler%29-class-method" class="signature"><strong>post</strong>(path : String, &handler : Hatty::Handler)</a>
+        
+          <div class="summary"><p>Listen for <code>POST</code> requests at <em>path</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#put%28path%2C%26handler%3AHatty%3A%3AHandler%29-class-method" class="signature"><strong>put</strong>(path, &handler : Hatty::Handler)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#status%28code%2C%26handler%3AHatty%3A%3AHandler%29-class-method" class="signature"><strong>status</strong>(code, &handler : Hatty::Handler)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+  <h2>Method Detail</h2>
+  
+    <div class="entry-detail" id="delete(path,&amp;handler:Hatty::Handler)-class-method">
+      <div class="signature">
+        
+        def <strong>delete</strong>(path, &handler : <a href="Hatty/Handler.html">Hatty::Handler</a>)
+
+        <a class="method-permalink" href="#delete%28path%2C%26handler%3AHatty%3A%3AHandler%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get(path:String,&amp;handler:Hatty::Handler)-class-method">
+      <div class="signature">
+        
+        def <strong>get</strong>(path : String, &handler : <a href="Hatty/Handler.html">Hatty::Handler</a>)
+
+        <a class="method-permalink" href="#get%28path%3AString%2C%26handler%3AHatty%3A%3AHandler%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Listen for <code>GET</code> requests on <em>path</em>.</p>
+
+<p>Example: Imaginary "get user" endpoint.</p>
+
+<pre><code>get <span class="s">&quot;/api/users/:id&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  user <span class="o">=</span> <span class="t">MyApi</span>.get_user_by_id(request.params[<span class="s">&quot;id&quot;</span>])
+  response.send_json({ data: user })
+<span class="k">end</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get(resource,headers=HTTP::Headers.new)-class-method">
+      <div class="signature">
+        
+        def <strong>get</strong>(resource, headers = <span class="t">HTTP</span><span class="t">::</span><span class="t">Headers</span>.<span class="k">new</span>)
+
+        <a class="method-permalink" href="#get%28resource%2Cheaders%3DHTTP%3A%3AHeaders.new%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="patch(path,&amp;handler:Hatty::Handler)-class-method">
+      <div class="signature">
+        
+        def <strong>patch</strong>(path, &handler : <a href="Hatty/Handler.html">Hatty::Handler</a>)
+
+        <a class="method-permalink" href="#patch%28path%2C%26handler%3AHatty%3A%3AHandler%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="post(path:String,&amp;handler:Hatty::Handler)-class-method">
+      <div class="signature">
+        
+        def <strong>post</strong>(path : String, &handler : <a href="Hatty/Handler.html">Hatty::Handler</a>)
+
+        <a class="method-permalink" href="#post%28path%3AString%2C%26handler%3AHatty%3A%3AHandler%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Listen for <code>POST</code> requests at <em>path</em>.</p>
+
+<p>Example: Imaginary "create user" endpoint.</p>
+
+<pre><code>post <span class="s">&quot;/api/users&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  user <span class="o">=</span> <span class="t">MyApi</span>.create_user(request.body.user)
+  response.send_json({ data: user })
+<span class="k">end</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="put(path,&amp;handler:Hatty::Handler)-class-method">
+      <div class="signature">
+        
+        def <strong>put</strong>(path, &handler : <a href="Hatty/Handler.html">Hatty::Handler</a>)
+
+        <a class="method-permalink" href="#put%28path%2C%26handler%3AHatty%3A%3AHandler%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="status(code,&amp;handler:Hatty::Handler)-class-method">
+      <div class="signature">
+        
+        def <strong>status</strong>(code, &handler : <a href="Hatty/Handler.html">Hatty::Handler</a>)
+
+        <a class="method-permalink" href="#status%28code%2C%26handler%3AHatty%3A%3AHandler%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+
+</div>
+
+</body>
+</html>

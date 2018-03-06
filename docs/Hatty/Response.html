@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="">
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../js/doc.js"></script>
+  <title>Hatty::Response - </title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="../index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class=" " data-id="/toplevel" data-name="top level namespace">
+      <a href="../toplevel.html">Top Level Namespace</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="/Hatty" data-name="hatty">
+      <a href="../Hatty.html">Hatty</a>
+      
+        <ul>
+  
+  <li class=" " data-id="/Hatty/Configuration" data-name="hatty::configuration">
+      <a href="../Hatty/Configuration.html">Configuration</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Hatty/Handler" data-name="hatty::handler">
+      <a href="../Hatty/Handler.html">Handler</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Hatty/Request" data-name="hatty::request">
+      <a href="../Hatty/Request.html">Request</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="/Hatty/Response" data-name="hatty::response">
+      <a href="../Hatty/Response.html">Response</a>
+      
+        <ul>
+  
+  <li class=" " data-id="/Hatty/Response/ExhaustedError" data-name="hatty::response::exhaustederror">
+      <a href="../Hatty/Response/ExhaustedError.html">ExhaustedError</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="/Hatty/Server" data-name="hatty::server">
+      <a href="../Hatty/Server.html">Server</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Hatty::Response
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Hatty/Response.html">Hatty::Response</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+
+
+
+
+
+  <h2>Constructors</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28response%3AHTTP%3A%3AServer%3A%3AResponse%29-class-method" class="signature"><strong>.new</strong>(response : HTTP::Server::Response)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#hatty_send_status_code%3ABool-instance-method" class="signature"><strong>#hatty_send_status_code</strong> : Bool</a>
+        
+          <div class="summary"><p><span class="flag purple">NOTE</span>  INTERNAL PROPERTY.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#hatty_sent%3ABool-instance-method" class="signature"><strong>#hatty_sent</strong> : Bool</a>
+        
+          <div class="summary"><p><span class="flag purple">NOTE</span>  INTERNAL PROPERTY.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#headers%3AHTTP%3A%3AHeaders-instance-method" class="signature"><strong>#headers</strong> : HTTP::Headers</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#original%3AHTTP%3A%3AServer%3A%3AResponse-instance-method" class="signature"><strong>#original</strong> : HTTP::Server::Response</a>
+        
+          <div class="summary"><p>Returns the original response</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send%28response%29%3ANil-instance-method" class="signature"><strong>#send</strong>(response) : Nil</a>
+        
+          <div class="summary"><p>Sends the <em>response</em> "as-is" to the client.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_json%28json%3AString%29%3ANil-instance-method" class="signature"><strong>#send_json</strong>(json : String) : Nil</a>
+        
+          <div class="summary"><p>Sends the <em>response</em> as <code>application/json</code> to the client.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_json%28jsonjsonable%29%3ANil-instance-method" class="signature"><strong>#send_json</strong>(json jsonable) : Nil</a>
+        
+          <div class="summary"><p>Sends the <em>response</em> as <code>application/json</code> to the client.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_status%28status_code%29%3ANil-instance-method" class="signature"><strong>#send_status</strong>(status_code) : Nil</a>
+        
+          <div class="summary"><p>Forwards the request to the status handlers.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_text%28text%29%3ANil-instance-method" class="signature"><strong>#send_text</strong>(text) : Nil</a>
+        
+          <div class="summary"><p>Sends the <em>text</em> as <code>text/plain</code> to the client.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#status_code%3AInt32-instance-method" class="signature"><strong>#status_code</strong> : Int32</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#status_code%3D%28code%29-instance-method" class="signature"><strong>#status_code=</strong>(code)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Constructor Detail</h2>
+  
+    <div class="entry-detail" id="new(response:HTTP::Server::Response)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(response : HTTP::Server::Response)
+
+        <a class="method-permalink" href="#new%28response%3AHTTP%3A%3AServer%3A%3AResponse%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="hatty_send_status_code:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>hatty_send_status_code</strong> : Bool
+
+        <a class="method-permalink" href="#hatty_send_status_code%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p><span class="flag purple">NOTE</span>  INTERNAL PROPERTY.
+This property tells Hatty if it should forward the request
+to a status handler.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="hatty_sent:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>hatty_sent</strong> : Bool
+
+        <a class="method-permalink" href="#hatty_sent%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p><span class="flag purple">NOTE</span>  INTERNAL PROPERTY.
+This property tells Hatty if the response has been used.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="headers:HTTP::Headers-instance-method">
+      <div class="signature">
+        
+        def <strong>headers</strong> : HTTP::Headers
+
+        <a class="method-permalink" href="#headers%3AHTTP%3A%3AHeaders-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="original:HTTP::Server::Response-instance-method">
+      <div class="signature">
+        
+        def <strong>original</strong> : HTTP::Server::Response
+
+        <a class="method-permalink" href="#original%3AHTTP%3A%3AServer%3A%3AResponse-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns the original response</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send(response):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>send</strong>(response) : Nil
+
+        <a class="method-permalink" href="#send%28response%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sends the <em>response</em> "as-is" to the client.</p>
+
+<pre><code>get <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  response.send <span class="s">&quot;Hellooo!&quot;</span>
+<span class="k">end</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_json(json:String):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>send_json</strong>(json : String) : Nil
+
+        <a class="method-permalink" href="#send_json%28json%3AString%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sends the <em>response</em> as <code>application/json</code> to the client.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_json(jsonjsonable):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>send_json</strong>(json jsonable) : Nil
+
+        <a class="method-permalink" href="#send_json%28jsonjsonable%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sends the <em>response</em> as <code>application/json</code> to the client.</p>
+
+<p><span class="flag purple">NOTE</span>  The <em>response</em> must have a <code>#to_json</code> method. Hatty automatically requires the JSON module which adds such method to <code>Hash</code>, <code>NamedTuple</code> and others.</p>
+
+<pre><code>get <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  json <span class="o">=</span> {hello: <span class="s">&quot;world&quot;</span>}
+  response.send_json(json)
+<span class="k">end</span></code></pre>
+
+<p>The client receives</p>
+
+<pre><code class='language-json'>{"hello": "world"}</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_status(status_code):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>send_status</strong>(status_code) : Nil
+
+        <a class="method-permalink" href="#send_status%28status_code%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Forwards the request to the status handlers.</p>
+
+<p>Example: Imaginary admin page with authorization</p>
+
+<pre><code>get <span class="s">&quot;/admin&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  authorized <span class="o">=</span> <span class="t">MyApi</span>.valid_token?(request.headers[<span class="s">&quot;Authorization&quot;</span>]?)
+  <span class="k">if</span> <span class="o">!</span>authorized
+    response.send_status <span class="n">401</span>
+    <span class="k">next</span>
+  <span class="k">end</span>
+  <span class="c"># ...</span>
+<span class="k">end</span>
+
+<span class="c"># `Response#send_status 401` forwards the request to this handler</span>
+status <span class="n">401</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  response.send_text <span class="s">&quot;ERR! Unauthorized.&quot;</span>
+<span class="k">end</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_text(text):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>send_text</strong>(text) : Nil
+
+        <a class="method-permalink" href="#send_text%28text%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sends the <em>text</em> as <code>text/plain</code> to the client.</p>
+
+<pre><code>get <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  response.send_text <span class="s">&quot;FeelsGoodMan&quot;</span>
+<span class="k">end</span></code></pre>
+
+<p>The client receives</p>
+
+<pre><code class='language-text'>FeelsGoodMan</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="status_code:Int32-instance-method">
+      <div class="signature">
+        
+        def <strong>status_code</strong> : Int32
+
+        <a class="method-permalink" href="#status_code%3AInt32-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="status_code=(code)-instance-method">
+      <div class="signature">
+        
+        def <strong>status_code=</strong>(code)
+
+        <a class="method-permalink" href="#status_code%3D%28code%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

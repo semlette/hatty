@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="js/doc.js"></script>
+  <title>Hatty - </title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class=" " data-id="/toplevel" data-name="top level namespace">
+      <a href="toplevel.html">Top Level Namespace</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="/Hatty" data-name="hatty">
+      <a href="Hatty.html">Hatty</a>
+      
+        <ul>
+  
+  <li class=" " data-id="/Hatty/Configuration" data-name="hatty::configuration">
+      <a href="Hatty/Configuration.html">Configuration</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Hatty/Handler" data-name="hatty::handler">
+      <a href="Hatty/Handler.html">Handler</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Hatty/Request" data-name="hatty::request">
+      <a href="Hatty/Request.html">Request</a>
+      
+    </li>
+  
+  <li class="parent " data-id="/Hatty/Response" data-name="hatty::response">
+      <a href="Hatty/Response.html">Response</a>
+      
+        <ul>
+  
+  <li class=" " data-id="/Hatty/Response/ExhaustedError" data-name="hatty::response::exhaustederror">
+      <a href="Hatty/Response/ExhaustedError.html">ExhaustedError</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="/Hatty/Server" data-name="hatty::server">
+      <a href="Hatty/Server.html">Server</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Hatty
+
+</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+
+
+
+  
+    <h2>Constant Summary</h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="VERSION">
+        <strong>VERSION</strong> = <code><span class="s">&quot;0.1.0&quot;</span></code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#config-class-method" class="signature"><strong>.config</strong></a>
+        
+          <div class="summary"><p>Returns Hatty's configuration.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#configure%28%26block%29-class-method" class="signature"><strong>.configure</strong>(&block)</a>
+        
+          <div class="summary"><p>Calls the block with Hatty's configuration.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#start%28port%3D3000%29-class-method" class="signature"><strong>.start</strong>(port = <span class="n">3000</span>)</a>
+        
+          <div class="summary"><p>Starts Hatty.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="config-class-method">
+      <div class="signature">
+        
+        def self.<strong>config</strong>
+
+        <a class="method-permalink" href="#config-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns Hatty's configuration.</p>
+
+<pre><code><span class="t">Hatty</span>.config.disable_powered_by <span class="o">=</span> <span class="n">true</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="configure(&amp;block)-class-method">
+      <div class="signature">
+        
+        def self.<strong>configure</strong>(&block)
+
+        <a class="method-permalink" href="#configure%28%26block%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Calls the block with Hatty's configuration.</p>
+
+<pre><code><span class="t">Hatty</span>.configure <span class="k">do</span> <span class="o">|</span>config<span class="o">|</span>
+  config.disable_powered_by <span class="o">=</span> <span class="n">true</span>
+<span class="k">end</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="start(port=3000)-class-method">
+      <div class="signature">
+        
+        def self.<strong>start</strong>(port = <span class="n">3000</span>)
+
+        <a class="method-permalink" href="#start%28port%3D3000%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Starts Hatty.
+This is a "shortcut" for running</p>
+
+<pre><code>server <span class="o">=</span> <span class="t">Hatty</span><span class="t">::</span><span class="t">Server</span>.<span class="k">new</span>(port: <span class="n">3000</span>)
+server.start</code></pre></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+
+</div>
+
+</body>
+</html>
