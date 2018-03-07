@@ -106,6 +106,16 @@ status 404 do |request, response|
 end
 ```
 
+#### Global status handler
+
+Instead of defining a status handler for every status code, you can define a Global Status Handler™. The global status handler will receive all status codes not handled by the status handlers. If you create a status handler for `404` and a global status handler, the global status handler will not receive `404` requests.
+
+```crystal
+status do |code, request, response|
+  response.send_text "Oops! Error code #{code}"
+end
+```
+
 [API documentation for `status`](https://semlette.github.io/hatty/toplevel.html#status%28code%2C%26handler%3AHatty%3A%3AHandler%29-class-method)
 
 [API documentation for `Response#send_status`](https://semlette.github.io/hatty/Hatty/Response#send_status%28status_code%29%3ANil-instance-method)
