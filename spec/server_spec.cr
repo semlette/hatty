@@ -1,6 +1,8 @@
 require "./spec_helper"
 
 describe Hatty::Server do
+  server = Hatty::Server.new(3000)
+
   describe "#native" do
     it "returns the HTTP::Server" do
       server = Hatty::Server.new(3000)
@@ -17,7 +19,6 @@ describe Hatty::Server do
       end
       
       context = create_context(resource: "/")
-      server = Hatty::Server.new(3000)
       server.handle_request(context)
 
       sent.should eq true
@@ -31,7 +32,6 @@ describe Hatty::Server do
       end
       
       context = create_context(resource: "/param/recieved")
-      server = Hatty::Server.new(3000)
       server.handle_request(context)
 
       recieved.should eq true
@@ -39,7 +39,6 @@ describe Hatty::Server do
 
     it "returns 404 if no handler was found" do      
       context = create_context(resource: "/i-dont-exist")
-      server = Hatty::Server.new(3000)
       server.handle_request(context)
 
       context.response.status_code.should eq 404
@@ -73,7 +72,6 @@ describe Hatty::Server do
       end
 
       context = create_context(resource: "/status")
-      server = Hatty::Server.new(3000)
       server.handle_request(context)
 
       forwarded.should eq true
@@ -88,11 +86,28 @@ describe Hatty::Server do
         response.send_text "I should have status code 403"
       end
 
-      context = create_context(resource: "/status-code")
-      server = Hatty::Server.new(3000)
+      context = create_context(resource: "/status-code")      
       server.handle_request(context)
 
       context.response.status_code.should eq 403
+    end
+
+    it "sends the request to the global status handler if there is no status handler" do
+      called = false
+
+      status do |code, request, response|
+        called = true
+        code.should eq 300
+      end
+
+      get "/unhandled-status-code" do |request, response|
+        response.send_status 300
+      end
+
+      context = create_context(resource: "/unhandled-status-code")
+      server.handle_request(context)
+
+      called.should eq true
     end
   end
 end

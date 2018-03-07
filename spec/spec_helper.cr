@@ -11,8 +11,8 @@ def create_response : HTTP::Server::Response
   HTTP::Server::Response.new(io)
 end
 
-def create_context(resource) : HTTP::Server::Context
-  request = create_request(resource: resource)
+def create_context(resource, method = "GET") : HTTP::Server::Context
+  request = create_request(method, resource: resource,)
   response = create_response
   HTTP::Server::Context.new(request, response)
 end

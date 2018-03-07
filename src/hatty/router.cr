@@ -22,6 +22,7 @@ module Hatty
     @@tree = Radix::Tree(String).new
     @@routes = Hash(String, Handler).new
     @@statuses = Hash(Int32, Handler).new
+    @@global_status_handler : GlobalStatusHandler? = nil
 
     def add_route(method, path, handler)
       combined = combine method, path
@@ -32,6 +33,15 @@ module Hatty
     def add_route(status, handler)
       raise ExistingRoute.new(status) if @@statuses[status]?
       @@statuses[status] = handler
+    end
+
+    def global_status_handler
+      @@global_status_handler
+    end
+
+    def global_status_handler=(handler)
+      raise ExistingRoute.new "global" if !@@global_status_handler.nil?
+      @@global_status_handler = handler
     end
 
     def tree
@@ -60,6 +70,9 @@ module Hatty
       if @@statuses[status]?
         response.status_code = status
         @@statuses[status].call request, response
+      elsif @@global_status_handler
+        response.status_code = status
+        @@global_status_handler.not_nil!.call status, request, response
       else
         response.original.status_code = status
         response.original.print status
