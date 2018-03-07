@@ -42,3 +42,23 @@ end
 def status(code, &handler : Hatty::Handler)
   Hatty::Router.add_route(code, handler)
 end
+
+# This creates a "global status handler". This is like a status code handler,
+# but receives all unhandled status codes.
+# NOTE: This can only be used once.
+#
+# ```
+# get "/unhandled" do |request, response|
+#   response.send_status 410
+# end
+#
+# status do |code, request, response|
+#   response.send_text "Code: #{code}"
+# end
+#
+# # GET /unhandled
+# # > "Code: 410"
+# ```
+def status(&handler : Hatty::GlobalStatusHandler)
+  Hatty::Router.global_status_handler = handler
+end
