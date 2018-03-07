@@ -93,7 +93,7 @@ module Hatty
     #   response.send_text "ERR! Unauthorized."
     # end
     # ```
-    # 
+    #
     def send_status(@status_code) : Nil
       # Raise if something has already been sent
       raise ExhaustedError.new if @sent

@@ -45,8 +45,8 @@ module Hatty
         Router.send_status(404, request, response)
       rescue error
         Router.send_status(500, request, response) # Send the status before we re-raise
-        context.response.close # Make sure to close the response
-        raise error # Raise the error to the user
+        context.response.close                     # Make sure to close the response
+        raise error                                # Raise the error to the user
       end
     end
   end
