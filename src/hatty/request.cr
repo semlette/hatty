@@ -4,6 +4,8 @@ module Hatty
     @parsed_params = false
     @query = {} of String => String
     @parsed_query = false
+    @body : JSON::Type? = nil
+    @parsed_body = false
 
     def initialize(@request : HTTP::Request)
     end
@@ -18,20 +20,17 @@ module Hatty
     end
 
     def body
-      # body.to_json
+      is_json = @request.headers["Content-Type"]? === "application/json"
+      if !@parsed_body && @request.body && is_json
+        JSON.parse @request.body.not_nil!
+      end
     end
 
     def body(mappings)
-      # mappings.from_json(json)
-    end
-
-    def body(builder : JSON::Builder)
-    end
-
-    private def parse_as_json(body)
-    end
-
-    private def parse_as_mapped_json(body)
+      is_json = @request.headers["Content-Type"]? === "application/json"
+      if !@parsed_body && @request.body && is_json
+        mappings.from_json(@request.body.not_nil!)
+      end
     end
 
     def query : Hash(String, String)

@@ -2,8 +2,8 @@ require "spec"
 require "http"
 require "../src/hatty"
 
-def create_request(method = "GET", resource = "/") : HTTP::Request
-  HTTP::Request.new(method, resource)
+def create_request(method = "GET", resource = "/", headers = HTTP::Headers.new, body : String? = nil) : HTTP::Request
+  HTTP::Request.new(method, resource, headers, body)
 end
 
 def create_response : HTTP::Server::Response

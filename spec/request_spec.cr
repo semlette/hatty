@@ -1,5 +1,11 @@
 require "./spec_helper"
 
+class TestMapping
+  JSON.mapping({
+    hello: String
+  })
+end
+
 describe Hatty::Request do
   describe "#original" do
     it "returns the original `HTTP::Request`" do
@@ -16,6 +22,54 @@ describe Hatty::Request do
 
       post_request = create_request method: "POST"
       Hatty::Request.new(post_request).method.should eq "POST"
+    end
+  end
+
+  describe "#body" do
+    it "returns nil if there is no body" do
+      post_request = create_request method: "POST"
+      Hatty::Request.new(post_request).body.should eq nil
+    end
+
+    it "returns nil if the `Content-Type` is not `application/json`" do
+      headers = HTTP::Headers{"Content-Type" => "text/plain"}
+      body = {"hello" => "world"}
+      post_request = create_request method: "POST", headers: headers, body: body.to_json
+      Hatty::Request.new(post_request).body.should eq nil
+    end
+
+    it "parses the body as JSON" do
+      headers = HTTP::Headers{"Content-Type" => "application/json"}
+      body = {"hello" => "world"}
+      post_request = create_request method: "POST", headers: headers, body: body.to_json
+      request = Hatty::Request.new(post_request)
+      request.body.should eq body
+    end
+  end
+
+  describe "#body(mappings)" do 
+    it "returns nil if there is no body" do
+      post_request = create_request method: "POST"
+      request = Hatty::Request.new(post_request)
+      request.body(TestMapping).should eq nil
+    end
+
+    it "returns nil if the `Content-Type` is not `application/json`" do
+      headers = HTTP::Headers{"Content-Type" => "text/plain"}
+      body = {"hello" => "world"}
+      post_request = create_request method: "POST", headers: headers, body: body.to_json
+      request = Hatty::Request.new(post_request)
+      request.body(TestMapping).should eq nil
+    end
+
+    it "maps the JSON to *mappings*" do
+      headers = HTTP::Headers{"Content-Type" => "application/json"}
+      body = {"hello" => "world"}
+      post_request = create_request method: "POST", headers: headers, body: body.to_json
+      request = Hatty::Request.new(post_request)
+      body = request.body(TestMapping)
+      body.should be_a TestMapping
+      body.not_nil!.hello.should eq "world"
     end
   end
 
