@@ -1,6 +1,9 @@
 module Hatty
   class Request
-    @params : Hash(String, String)? = nil
+    @params = {} of String => String
+    @parsed_params = false
+    @query = {} of String => String
+    @parsed_query = false
 
     def initialize(@request : HTTP::Request)
     end
@@ -31,13 +34,24 @@ module Hatty
     private def parse_as_mapped_json(body)
     end
 
+    def query : Hash(String, String)
+      if !@parsed_query && @request.query
+        params = HTTP::Params.parse @request.query.not_nil!
+        params.each do |key, value|
+          @query[key] = value
+        end
+      end
+
+      @query
+    end
+
     def params : Hash(String, String)
-      if @params
-        @params.as(Hash(String, String))
+      if @parsed_params
+        @params
       else
         tree_path = Router.tree.find @request.path
+        @parsed_params = true
         @params = tree_path.params
-        @params.as(Hash(String, String))
       end
     end
 

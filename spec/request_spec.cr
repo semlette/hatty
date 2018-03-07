@@ -30,6 +30,21 @@ describe Hatty::Request do
     end
   end
 
+  describe "#query" do
+    it "returns a hash with the query parameters" do
+      get "/query" do
+      end
+
+      http_request = create_request resource: "/query?awesome=true&works=hopefully"
+      request = Hatty::Request.new(http_request)
+      request.query.should eq({ "awesome" => "true", "works" => "hopefully" })
+
+      second_http_request = create_request resource: "/query"
+      second_request = Hatty::Request.new(second_http_request)
+      second_request.query.should eq({} of String => String)
+    end
+  end
+
   describe "#path" do
     it "returns the path" do
       http_request = create_request resource: "/users/1"
