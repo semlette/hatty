@@ -1,0 +1,14 @@
+version: 2
+
+jobs:
+  test:
+    docker:
+      - image: crystallang/crystal:0.24.1
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: crystal deps
+      - run:
+          name: Run tests
+          command: crystal spec
