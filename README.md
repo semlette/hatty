@@ -1,4 +1,4 @@
-# Hatty
+# Hatty [![CircleCI](https://circleci.com/gh/semlette/hatty.svg?style=svg)](https://circleci.com/gh/semlette/hatty)
 
 A library for creating HTTP services in Crystal
 
