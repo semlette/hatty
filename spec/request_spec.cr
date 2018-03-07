@@ -19,14 +19,22 @@ describe Hatty::Request do
     end
   end
 
+  get "/users/:id" do
+  end
+
   describe "#params" do
     it "returns a hash with the parameters" do
-      get "/users/:id" do
-      end
-
       http_request = create_request resource: "/users/1"
       request = Hatty::Request.new(http_request)
       request.params.should eq({ "id" => "1" })
+    end
+  end
+
+  describe "#parameters" do
+    it "returns a hash with the parameters" do
+      http_request = create_request resource: "/users/3"
+      request = Hatty::Request.new(http_request)
+      request.parameters.should eq({ "id" => "3" })
     end
   end
 

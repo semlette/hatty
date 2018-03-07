@@ -45,14 +45,27 @@ module Hatty
       @query
     end
 
+    # Returns a hash with the url parameters.
+    # ```
+    # get "/users/:id" do |request, response|
+    #   puts response.params["id"]
+    # end
+    #
+    # # GET /users/3
+    # # > "3"
+    # ```
     def params : Hash(String, String)
-      if @parsed_params
-        @params
-      else
+      if !@parsed_params
         tree_path = Router.tree.find @request.path
-        @parsed_params = true
         @params = tree_path.params
       end
+
+      @params
+    end
+
+    # Alias for `#params`
+    def parameters : Hash(String, String)
+      params
     end
 
     def path
