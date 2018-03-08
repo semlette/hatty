@@ -35,6 +35,11 @@
       
     </li>
   
+  <li class=" " data-id="github.com/semlette/hatty/Hatty/GlobalStatusHandler" data-name="hatty::globalstatushandler">
+      <a href="Hatty/GlobalStatusHandler.html">GlobalStatusHandler</a>
+      
+    </li>
+  
   <li class=" " data-id="github.com/semlette/hatty/Hatty/Handler" data-name="hatty::handler">
       <a href="Hatty/Handler.html">Handler</a>
       
@@ -75,9 +80,11 @@
 </div>
 
 <div id="main-content">
-<h1>Hatty</h1>
+<h1>Hatty <a href="https://circleci.com/gh/semlette/hatty" target="_blank"><img src="https://circleci.com/gh/semlette/hatty.svg?style=svg" alt="CircleCI"/></a></h1>
 
 <p>A library for creating HTTP services in Crystal</p>
+
+<blockquote>WORK IN PROGRESS. Please don't use this in production, it will probably break. I actually don't think it will, but I don't promise anything.</blockquote>
 
 <pre><code class='language-crystal'><span class="k">require</span> <span class="s">&quot;hatty&quot;</span>
 
@@ -89,7 +96,7 @@ get <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="
 
 <h2>Installing</h2>
 
-<p>Add this snippet to your <code>shards.yml</code> file</p>
+<p>Add this snippet to your <code>shard.yml</code> file</p>
 
 <pre><code class='language-yml'>dependencies:
   hatty:
@@ -97,35 +104,88 @@ get <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="
 
 <h2>Usage</h2>
 
-<blockquote>All of the following examples expects that Hatty has been required and started.</blockquote>
-
 <pre><code class='language-crystal'><span class="k">require</span> <span class="s">&quot;hatty&quot;</span>
 
-<span class="c"># ...</span>
+<span class="c"># Define handlers using `get`, `post`, `put`, `delete` and `patch`</span>
+
+<span class="k">module</span> <span class="t">MyApi</span>
+  <span class="c"># Imaginary API</span>
+  <span class="c"># ...</span>
+<span class="k">end</span>
+
+get <span class="s">&quot;/users/:id&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  user <span class="o">=</span> <span class="t">MyApi</span>.get_user by_id: request.params[<span class="s">&quot;id&quot;</span>]
+  response.send_json({ data: user })
+<span class="k">end</span>
+
+post <span class="s">&quot;/users&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  name <span class="o">=</span> response.body[<span class="s">&quot;name&quot;</span>]
+  new_user <span class="o">=</span> <span class="t">MyApi</span>.create_user(name)
+  response.send_json({ success: <span class="n">true</span>, data: new_user })
+<span class="k">end</span>
+
+delete <span class="s">&quot;/users/:id&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  token <span class="o">=</span> request.headers[<span class="s">&quot;Authorization&quot;</span>]?
+  is_admin <span class="o">=</span> <span class="t">MyApi</span>.is_admin?(token)
+  <span class="k">if</span> is_admin
+    <span class="t">MyApi</span>.delete_user by_id: request.params[<span class="s">&quot;id&quot;</span>]
+    response.send_json({ <span class="s">&quot;success&quot;</span> => <span class="n">true</span> })
+  <span class="k">else</span>
+    <span class="c"># Send status 401 Unauthorized</span>
+    response.send_status <span class="n">401</span>
+  <span class="k">end</span>
+<span class="k">end</span>
 
 <span class="t">Hatty</span>.start</code></pre>
 
-<h3>Listening for requests</h3>
+<p>Every handler receives a <a href="https://semlette.github.io/hatty/Hatty/Request" target="_blank">request</a> and a <a href="https://semlette.github.io/hatty/Hatty/Response" target="_blank">response</a>. The request contains information about the request like the <a href="" target="_blank">headers</a>, the <a href="https://semlette.github.io/hatty/Hatty/Request#body-instance-method" target="_blank">body</a>, <a href="" target="_blank">url queries</a> and <a href="https://semlette.github.io/hatty/Hatty/Request#params%3AHash%28String%2CString%29-instance-method" target="_blank">parameters</a>. The response has properties like the <a href="" target="_blank">status code</a>, <a href="https://semlette.github.io/hatty/Hatty/Response#headers%3AHTTP%3A%3AHeaders-instance-method" target="_blank">headers</a> and a lot of helper methods for sending stuff back to the client.</p>
+
+<ul><li><a href="https://semlette.github.io/hatty/toplevel.html" target="_blank">All handlers methods</a></li><li><a href="https://semlette.github.io/hatty/Hatty#start%28port%3D3000%29-class-method" target="_blank">Starting hatty</a></li></ul>
+
+<h3>Sending stuff</h3>
 
 <pre><code class='language-crystal'>get <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
-  response.send_text <span class="s">&quot;It&#39;s alive!&quot;</span>
-<span class="k">end</span>
-
-post <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
-  <span class="c"># ...</span>
-<span class="k">end</span>
-
-put <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
-  <span class="c"># ...</span>
-<span class="k">end</span>
-
-delete <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
-  <span class="c"># ...</span>
-<span class="k">end</span>
-
-patch <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
-  <span class="c"># ...</span>
+  <span class="c"># Note: You can only call `#send...` once</span>
+  response.send <span class="s">&quot;&lt;!DOCTYPE&gt;&lt;html&gt;&lt;body&gt;I have no Content-Type&lt;/body&gt;&lt;/html&gt;&quot;</span>
+  response.send_text <span class="s">&quot;I am text/plain&quot;</span>
+  response.send_json({ <span class="s">&quot;content-type&quot;</span> => <span class="s">&quot;application/json&quot;</span> })
+  response.send_status <span class="n">404</span>
 <span class="k">end</span></code></pre>
+
+<p><a href="https://semlette.github.io/hatty/Hatty/Response" target="_blank">API documentation for <code>Response</code></a></p>
+
+<h3>Status codes</h3>
+
+<h4>Setting the status code</h4>
+
+<pre><code class='language-crystal'>get <span class="s">&quot;/admin&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  response.status_code <span class="o">=</span> <span class="n">401</span>
+  response.send_text <span class="s">&quot;Unauthorized.&quot;</span>
+<span class="k">end</span></code></pre>
+
+<h4>Using status handlers</h4>
+
+<p>Status handlers are handlers that respond to a specific status code. When you call <code>Response#send_status</code>, the request is passed to the status handler with the same status code. If a handler raises an uncaught error, Hatty sends the request to the <code>500</code> status handler. It also passes requests with no handler to the <code>404</code> status handler.</p>
+
+<pre><code class='language-crystal'>get <span class="s">&quot;/private&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  response.send_status <span class="n">404</span>
+<span class="k">end</span>
+
+status <span class="n">404</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  response.send_text <span class="s">&quot;Oops, file not found. ¯\_(ツ)_/¯&quot;</span>
+<span class="k">end</span></code></pre>
+
+<h4>Global status handler</h4>
+
+<p>Instead of defining a status handler for every status code, you can define a Global Status Handler™. The global status handler will receive all status codes not handled by the status handlers. If you create a status handler for <code>404</code> and a global status handler, the global status handler will not receive <code>404</code> requests.</p>
+
+<pre><code class='language-crystal'>status <span class="k">do</span> <span class="o">|</span>code, request, response<span class="o">|</span>
+  response.send_text <span class="s">&quot;Oops! Error code </span><span class="i">#{</span></span>code<span class="s"><span class="i">}</span>&quot;</span>
+<span class="k">end</span></code></pre>
+
+<p><a href="https://semlette.github.io/hatty/toplevel.html#status%28code%2C%26handler%3AHatty%3A%3AHandler%29-class-method" target="_blank">API documentation for <code>status</code></a></p>
+
+<p><a href="https://semlette.github.io/hatty/Hatty/Response#send_status%28status_code%29%3ANil-instance-method" target="_blank">API documentation for <code>Response#send_status</code></a></p>
 </div>
 </body>
 </html>

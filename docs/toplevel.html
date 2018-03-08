@@ -35,6 +35,11 @@
       
     </li>
   
+  <li class=" " data-id="github.com/semlette/hatty/Hatty/GlobalStatusHandler" data-name="hatty::globalstatushandler">
+      <a href="Hatty/GlobalStatusHandler.html">GlobalStatusHandler</a>
+      
+    </li>
+  
   <li class=" " data-id="github.com/semlette/hatty/Hatty/Handler" data-name="hatty::handler">
       <a href="Hatty/Handler.html">Handler</a>
       
@@ -144,6 +149,13 @@
         
       </li>
     
+      <li class="entry-summary">
+        <a href="#status%28%26handler%3AHatty%3A%3AGlobalStatusHandler%29-class-method" class="signature"><strong>status</strong>(&handler : Hatty::GlobalStatusHandler)</a>
+        
+          <div class="summary"><p>This creates a "global status handler".</p></div>
+        
+      </li>
+    
   </ul>
 
 
@@ -172,7 +184,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/122c775ac7259e3f8dc18180e4cf63f329070ae3/src/hatty/routing.cr#L32" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/4f9ec959d52544d99778ec6ad04d7453f9d634db/src/hatty/routing.cr#L32" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -197,7 +209,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/122c775ac7259e3f8dc18180e4cf63f329070ae3/src/hatty/routing.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/4f9ec959d52544d99778ec6ad04d7453f9d634db/src/hatty/routing.cr#L9" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -213,7 +225,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/122c775ac7259e3f8dc18180e4cf63f329070ae3/src/hatty/routing.cr#L37" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/4f9ec959d52544d99778ec6ad04d7453f9d634db/src/hatty/routing.cr#L37" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -238,7 +250,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/122c775ac7259e3f8dc18180e4cf63f329070ae3/src/hatty/routing.cr#L22" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/4f9ec959d52544d99778ec6ad04d7453f9d634db/src/hatty/routing.cr#L22" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -254,7 +266,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/122c775ac7259e3f8dc18180e4cf63f329070ae3/src/hatty/routing.cr#L27" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/4f9ec959d52544d99778ec6ad04d7453f9d634db/src/hatty/routing.cr#L27" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -270,7 +282,39 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/122c775ac7259e3f8dc18180e4cf63f329070ae3/src/hatty/routing.cr#L42" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/4f9ec959d52544d99778ec6ad04d7453f9d634db/src/hatty/routing.cr#L42" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="status(&amp;handler:Hatty::GlobalStatusHandler)-class-method">
+      <div class="signature">
+        
+        def <strong>status</strong>(&handler : <a href="Hatty/GlobalStatusHandler.html">Hatty::GlobalStatusHandler</a>)
+
+        <a class="method-permalink" href="#status%28%26handler%3AHatty%3A%3AGlobalStatusHandler%29-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>This creates a "global status handler". This is like a status code handler,
+but receives all unhandled status codes.</p>
+
+<p><span class="flag purple">NOTE</span>  This can only be used once.</p>
+
+<pre><code>get <span class="s">&quot;/unhandled&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  response.send_status <span class="n">410</span>
+<span class="k">end</span>
+
+status <span class="k">do</span> <span class="o">|</span>code, request, response<span class="o">|</span>
+  response.send_text <span class="s">&quot;Code: </span><span class="i">#{</span></span>code<span class="s"><span class="i">}</span>&quot;</span>
+<span class="k">end</span>
+
+<span class="c"># GET /unhandled</span>
+<span class="c"># &gt; &quot;Code: 410&quot;</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/semlette/hatty/blob/4f9ec959d52544d99778ec6ad04d7453f9d634db/src/hatty/routing.cr#L62" target="_blank">View source</a>]
         
       </div>
     </div>
