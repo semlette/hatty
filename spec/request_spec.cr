@@ -45,6 +45,17 @@ describe Hatty::Request do
       request = Hatty::Request.new(post_request)
       request.body.should eq body
     end
+
+    # I could imagine screwing up the caching and accidentally not returning the JSON
+    it "doesn't stop returning" do
+      headers = HTTP::Headers{"Content-Type" => "application/json"}
+      body = {"hello" => "world"}
+      post_request = create_request method: "POST", headers: headers, body: body.to_json
+      request = Hatty::Request.new(post_request)
+      request.body.should eq body
+      request.body.should eq body
+      request.body.should eq body
+    end
   end
 
   describe "#body(mappings)" do 
@@ -68,6 +79,19 @@ describe Hatty::Request do
       post_request = create_request method: "POST", headers: headers, body: body.to_json
       request = Hatty::Request.new(post_request)
       body = request.body(TestMapping)
+      body.should be_a TestMapping
+      body.not_nil!.hello.should eq "world"
+    end
+
+    # Same as #body, i could imagine screwing up the caching and accidentally not returning the JSON
+    it "doesn't stop returning" do
+      headers = HTTP::Headers{"Content-Type" => "application/json"}
+      body = {"hello" => "world"}
+      post_request = create_request method: "POST", headers: headers, body: body.to_json
+      request = Hatty::Request.new(post_request)
+      body = request.body(TestMapping)
+      body.should be_a TestMapping
+      body.should be_a TestMapping
       body.should be_a TestMapping
       body.not_nil!.hello.should eq "world"
     end
