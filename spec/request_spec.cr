@@ -97,6 +97,60 @@ describe Hatty::Request do
     end
   end
 
+  describe "#form" do
+    it "returns a hash with the formdata" do
+      # Create formdata
+      io = IO::Memory.new
+      formdata = HTTP::FormData::Builder.new(io, "ILOVEHATTY")
+      formdata.field "hello", "world"
+      formdata.finish
+      
+      headers = HTTP::Headers{"Content-Type" => "multipart/form-data; boundary=ILOVEHATTY"}
+      post_request = create_request method: "POST", headers: headers, body: io.to_s
+      request = Hatty::Request.new(post_request)
+
+      request.form.should eq({ "hello" => "world" })
+    end
+
+    it "returns nil if the content type is not multipart/form-data" do
+      # Create formdata
+      io = IO::Memory.new
+      formdata = HTTP::FormData::Builder.new(io, "ILOVEHATTY")
+      formdata.field "hello", "world"
+      formdata.finish
+      
+      headers = HTTP::Headers{"Content-Type" => "application/json"}
+      post_request = create_request method: "POST", headers: headers, body: io.to_s
+      request = Hatty::Request.new(post_request)
+
+      request.form.should eq nil
+    end
+
+    it "returns nil if the body is empty" do
+      headers = HTTP::Headers{"Content-Type" => "multipart/form-data; boundary=ILOVEHATTY"}
+      post_request = create_request method: "POST", headers: headers
+      request = Hatty::Request.new(post_request)
+
+      request.form.should eq nil
+    end
+
+    it "doesn't stop returning" do
+      # Create formdata
+      io = IO::Memory.new
+      formdata = HTTP::FormData::Builder.new(io, "ILOVEHATTY")
+      formdata.field "hello", "world"
+      formdata.finish
+      
+      headers = HTTP::Headers{"Content-Type" => "multipart/form-data; boundary=ILOVEHATTY"}
+      post_request = create_request method: "POST", headers: headers, body: io.to_s
+      request = Hatty::Request.new(post_request)
+
+      request.form.should eq({ "hello" => "world" })
+      request.form.should eq({ "hello" => "world" })
+      request.form.should eq({ "hello" => "world" })
+    end
+  end
+
   get "/users/:id" do
   end
 

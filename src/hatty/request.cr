@@ -6,6 +6,8 @@ module Hatty
     @parsed_query = false
     @body : JSON::Any? = nil
     @parsed_body = false
+    @form = {} of String => String
+    @parsed_form = false
 
     def initialize(@request : HTTP::Request)
     end
@@ -33,6 +35,21 @@ module Hatty
       is_json = @request.headers["Content-Type"]? === "application/json"
       if @request.body && is_json
         mappings.from_json(@request.body.not_nil!)
+      end
+    end
+
+    def form : Hash(String, String)?
+      is_formdata = @request.headers["Content-Type"].starts_with?("multipart/form-data")
+      if !@parsed_form && @request.body && is_formdata
+        HTTP::FormData.parse(@request) do |part|
+          @form[part.name] = part.body.gets_to_end
+        end
+        @parsed_form = true
+        @form
+      elsif @parsed_form
+        @form
+      else
+        nil
       end
     end
 
