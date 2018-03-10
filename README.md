@@ -4,6 +4,14 @@ A library for creating HTTP services in Crystal
 
 > WORK IN PROGRESS. Please don't use this in production, it will probably break. I actually don't think it will, but I don't promise anything.
 
+To-do
+
+* [multipart/form-data support](https://github.com/semlette/hatty/tree/formdata)
+* websockets
+* [Add suggestion](https://github.com/semlette/hatty/issues/new)
+
+---
+
 ```crystal
 require "hatty"
 
