@@ -101,7 +101,11 @@
 
 <blockquote>WORK IN PROGRESS. Please don't use this in production, it will probably break. I actually don't think it will, but I don't promise anything.</blockquote>
 
-<pre><code class='language-crystal'><span class="k">require</span> <span class="s">&quot;hatty&quot;</span>
+<p>To-do</p>
+
+<ul><li><a href="https://github.com/semlette/hatty/tree/formdata" target="_blank">multipart/form-data support</a></li><li>websockets</li><li><a href="https://github.com/semlette/hatty/issues/new" target="_blank">Add suggestion</a></li></ul>
+
+<hr/><pre><code class='language-crystal'><span class="k">require</span> <span class="s">&quot;hatty&quot;</span>
 
 get <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
   response.send_text <span class="s">&quot;Hello there!&quot;</span>

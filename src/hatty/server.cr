@@ -1,8 +1,9 @@
 module Hatty
+  # Basically `HTTP::Server` but with routing.
   class Server
     @server : HTTP::Server
 
-    def initialize(port)
+    def initialize(port : Int32)
       @server = HTTP::Server.new port do |context|
         handle_request context
       end
@@ -21,7 +22,7 @@ module Hatty
       @server.close
     end
 
-    # NOTE: INTERNAL METHOD
+    # :nodoc:
     def handle_request(context)
       path = context.request.path
       method = context.request.method

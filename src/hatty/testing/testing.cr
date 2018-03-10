@@ -42,7 +42,9 @@ private class TestServer
 end
 
 # Override the Server#start method so it doesn't actually start the server.
+
 class Hatty::Server
+  # :nodoc:
   def initialize(port)
     @server = HTTP::Server.new(port) {}
     TestServer.server = self
