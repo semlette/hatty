@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/semlette/hatty">
+  <link href="../../css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../../js/doc.js"></script>
+  <title>Hatty::Testing::Response - github.com/semlette/hatty</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="../../index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class=" " data-id="github.com/semlette/hatty/toplevel" data-name="top level namespace">
+      <a href="../../toplevel.html">Top Level Namespace</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="github.com/semlette/hatty/Hatty" data-name="hatty">
+      <a href="../../Hatty.html">Hatty</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/semlette/hatty/Hatty/Configuration" data-name="hatty::configuration">
+      <a href="../../Hatty/Configuration.html">Configuration</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/semlette/hatty/Hatty/GlobalStatusHandler" data-name="hatty::globalstatushandler">
+      <a href="../../Hatty/GlobalStatusHandler.html">GlobalStatusHandler</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/semlette/hatty/Hatty/Handler" data-name="hatty::handler">
+      <a href="../../Hatty/Handler.html">Handler</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/semlette/hatty/Hatty/Request" data-name="hatty::request">
+      <a href="../../Hatty/Request.html">Request</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/semlette/hatty/Hatty/Response" data-name="hatty::response">
+      <a href="../../Hatty/Response.html">Response</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/semlette/hatty/Hatty/Response/ExhaustedError" data-name="hatty::response::exhaustederror">
+      <a href="../../Hatty/Response/ExhaustedError.html">ExhaustedError</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/semlette/hatty/Hatty/Server" data-name="hatty::server">
+      <a href="../../Hatty/Server.html">Server</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="github.com/semlette/hatty/Hatty/Testing" data-name="hatty::testing">
+      <a href="../../Hatty/Testing.html">Testing</a>
+      
+        <ul>
+  
+  <li class=" current" data-id="github.com/semlette/hatty/Hatty/Testing/Response" data-name="hatty::testing::response">
+      <a href="../../Hatty/Testing/Response.html">Response</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">class</span> Hatty::Testing::Response
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../../Hatty/Testing/Response.html">Hatty::Testing::Response</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/testing/response.cr#L3" target="_blank">hatty/testing/response.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+  <h2>Constructors</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#new%28request%3AHTTP%3A%3AClient%3A%3AResponse%29-class-method" class="signature"><strong>.new</strong>(request : HTTP::Client::Response)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#body%3AString-instance-method" class="signature"><strong>#body</strong> : String</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#headers-instance-method" class="signature"><strong>#headers</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#json%28mappings%29-instance-method" class="signature"><strong>#json</strong>(mappings)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#json%3AJSON%3A%3AAny%3F-instance-method" class="signature"><strong>#json</strong> : JSON::Any?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#json%3F%3ABool-instance-method" class="signature"><strong>#json?</strong> : Bool</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#original%3AHTTP%3A%3AClient%3A%3AResponse-instance-method" class="signature"><strong>#original</strong> : HTTP::Client::Response</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#status_code-instance-method" class="signature"><strong>#status_code</strong></a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+  <h2>Constructor Detail</h2>
+  
+    <div class="entry-detail" id="new(request:HTTP::Client::Response)-class-method">
+      <div class="signature">
+        
+        def self.<strong>new</strong>(request : HTTP::Client::Response)
+
+        <a class="method-permalink" href="#new%28request%3AHTTP%3A%3AClient%3A%3AResponse%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/testing/response.cr#L4" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="body:String-instance-method">
+      <div class="signature">
+        
+        def <strong>body</strong> : String
+
+        <a class="method-permalink" href="#body%3AString-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/testing/response.cr#L19" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="headers-instance-method">
+      <div class="signature">
+        
+        def <strong>headers</strong>
+
+        <a class="method-permalink" href="#headers-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/testing/response.cr#L15" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="json(mappings)-instance-method">
+      <div class="signature">
+        
+        def <strong>json</strong>(mappings)
+
+        <a class="method-permalink" href="#json%28mappings%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/testing/response.cr#L29" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="json:JSON::Any?-instance-method">
+      <div class="signature">
+        
+        def <strong>json</strong> : JSON::Any?
+
+        <a class="method-permalink" href="#json%3AJSON%3A%3AAny%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/testing/response.cr#L23" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="json?:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>json?</strong> : Bool
+
+        <a class="method-permalink" href="#json%3F%3ABool-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/testing/response.cr#L35" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="original:HTTP::Client::Response-instance-method">
+      <div class="signature">
+        
+        def <strong>original</strong> : HTTP::Client::Response
+
+        <a class="method-permalink" href="#original%3AHTTP%3A%3AClient%3A%3AResponse-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/testing/response.cr#L7" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="status_code-instance-method">
+      <div class="signature">
+        
+        def <strong>status_code</strong>
+
+        <a class="method-permalink" href="#status_code-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/testing/response.cr#L11" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

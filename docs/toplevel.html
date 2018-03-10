@@ -70,6 +70,21 @@
       
     </li>
   
+  <li class="parent " data-id="github.com/semlette/hatty/Hatty/Testing" data-name="hatty::testing">
+      <a href="Hatty/Testing.html">Testing</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/semlette/hatty/Hatty/Testing/Response" data-name="hatty::testing::response">
+      <a href="Hatty/Testing/Response.html">Response</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
 </ul>
 
       
@@ -121,6 +136,13 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#delete%28resource%2Cheaders%3AHTTP%3A%3AHeaders%3F%3Dnil%2Cbody%3AString%3F%3Dnil%29%3AHatty%3A%3ATesting%3A%3AResponse-class-method" class="signature"><strong>delete</strong>(resource, headers : HTTP::Headers? = <span class="n">nil</span>, body : String? = <span class="n">nil</span>) : Hatty::Testing::Response</a>
+        
+          <div class="summary"><p>Sends a <code>DELETE</code> requests for <em>resource</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#get%28path%3AString%2C%26handler%3AHatty%3A%3AHandler%29-class-method" class="signature"><strong>get</strong>(path : String, &handler : Hatty::Handler)</a>
         
           <div class="summary"><p>Listen for <code>GET</code> requests on <em>path</em>.</p></div>
@@ -128,7 +150,21 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#get%28resource%2Cheaders%3AHTTP%3A%3AHeaders%3F%3Dnil%2Cbody%3AString%3F%3Dnil%29%3AHatty%3A%3ATesting%3A%3AResponse-class-method" class="signature"><strong>get</strong>(resource, headers : HTTP::Headers? = <span class="n">nil</span>, body : String? = <span class="n">nil</span>) : Hatty::Testing::Response</a>
+        
+          <div class="summary"><p>Sends a <code>GET</code> requests for <em>resource</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#patch%28path%2C%26handler%3AHatty%3A%3AHandler%29-class-method" class="signature"><strong>patch</strong>(path, &handler : Hatty::Handler)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#patch%28resource%2Cheaders%3AHTTP%3A%3AHeaders%3F%3Dnil%2Cbody%3AString%3F%3Dnil%29%3AHatty%3A%3ATesting%3A%3AResponse-class-method" class="signature"><strong>patch</strong>(resource, headers : HTTP::Headers? = <span class="n">nil</span>, body : String? = <span class="n">nil</span>) : Hatty::Testing::Response</a>
+        
+          <div class="summary"><p>Sends a <code>PATCH</code> requests for <em>resource</em>.</p></div>
         
       </li>
     
@@ -140,7 +176,21 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#post%28resource%2Cheaders%3AHTTP%3A%3AHeaders%3F%3Dnil%2Cbody%3AString%3F%3Dnil%29%3AHatty%3A%3ATesting%3A%3AResponse-class-method" class="signature"><strong>post</strong>(resource, headers : HTTP::Headers? = <span class="n">nil</span>, body : String? = <span class="n">nil</span>) : Hatty::Testing::Response</a>
+        
+          <div class="summary"><p>Sends a <code>POST</code> requests for <em>resource</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#put%28path%2C%26handler%3AHatty%3A%3AHandler%29-class-method" class="signature"><strong>put</strong>(path, &handler : Hatty::Handler)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#put%28resource%2Cheaders%3AHTTP%3A%3AHeaders%3F%3Dnil%2Cbody%3AString%3F%3Dnil%29%3AHatty%3A%3ATesting%3A%3AResponse-class-method" class="signature"><strong>put</strong>(resource, headers : HTTP::Headers? = <span class="n">nil</span>, body : String? = <span class="n">nil</span>) : Hatty::Testing::Response</a>
+        
+          <div class="summary"><p>Sends a <code>PUT</code> requests for <em>resource</em>.</p></div>
         
       </li>
     
@@ -184,7 +234,33 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/4f9ec959d52544d99778ec6ad04d7453f9d634db/src/hatty/routing.cr#L32" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/routing.cr#L32" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="delete(resource,headers:HTTP::Headers?=nil,body:String?=nil):Hatty::Testing::Response-class-method">
+      <div class="signature">
+        
+        def <strong>delete</strong>(resource, headers : HTTP::Headers? = <span class="n">nil</span>, body : String? = <span class="n">nil</span>) : <a href="Hatty/Testing/Response.html">Hatty::Testing::Response</a>
+
+        <a class="method-permalink" href="#delete%28resource%2Cheaders%3AHTTP%3A%3AHeaders%3F%3Dnil%2Cbody%3AString%3F%3Dnil%29%3AHatty%3A%3ATesting%3A%3AResponse-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sends a <code>DELETE</code> requests for <em>resource</em>.</p>
+
+<p><span class="flag purple">NOTE</span>  Only available by importing <code>hatty/testing</code>.</p>
+
+<pre><code>delete <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  response.send_status <span class="n">401</span>
+<span class="k">end</span>
+response <span class="o">=</span> delete <span class="s">&quot;/&quot;</span>
+response.status_code <span class="c"># -&gt; 401</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/testing/testing.cr#L92" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -209,7 +285,33 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/4f9ec959d52544d99778ec6ad04d7453f9d634db/src/hatty/routing.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/routing.cr#L9" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="get(resource,headers:HTTP::Headers?=nil,body:String?=nil):Hatty::Testing::Response-class-method">
+      <div class="signature">
+        
+        def <strong>get</strong>(resource, headers : HTTP::Headers? = <span class="n">nil</span>, body : String? = <span class="n">nil</span>) : <a href="Hatty/Testing/Response.html">Hatty::Testing::Response</a>
+
+        <a class="method-permalink" href="#get%28resource%2Cheaders%3AHTTP%3A%3AHeaders%3F%3Dnil%2Cbody%3AString%3F%3Dnil%29%3AHatty%3A%3ATesting%3A%3AResponse-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sends a <code>GET</code> requests for <em>resource</em>.</p>
+
+<p><span class="flag purple">NOTE</span>  Only available by importing <code>hatty/testing</code>.</p>
+
+<pre><code>get <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  response.send_status <span class="n">401</span>
+<span class="k">end</span>
+response <span class="o">=</span> get <span class="s">&quot;/&quot;</span>
+response.status_code <span class="c"># -&gt; 401</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/testing/testing.cr#L66" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -225,7 +327,33 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/4f9ec959d52544d99778ec6ad04d7453f9d634db/src/hatty/routing.cr#L37" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/routing.cr#L37" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="patch(resource,headers:HTTP::Headers?=nil,body:String?=nil):Hatty::Testing::Response-class-method">
+      <div class="signature">
+        
+        def <strong>patch</strong>(resource, headers : HTTP::Headers? = <span class="n">nil</span>, body : String? = <span class="n">nil</span>) : <a href="Hatty/Testing/Response.html">Hatty::Testing::Response</a>
+
+        <a class="method-permalink" href="#patch%28resource%2Cheaders%3AHTTP%3A%3AHeaders%3F%3Dnil%2Cbody%3AString%3F%3Dnil%29%3AHatty%3A%3ATesting%3A%3AResponse-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sends a <code>PATCH</code> requests for <em>resource</em>.</p>
+
+<p><span class="flag purple">NOTE</span>  Only available by importing <code>hatty/testing</code>.</p>
+
+<pre><code>patch <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  response.send_status <span class="n">401</span>
+<span class="k">end</span>
+response <span class="o">=</span> patch <span class="s">&quot;/&quot;</span>
+response.status_code <span class="c"># -&gt; 401</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/testing/testing.cr#L118" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -250,7 +378,33 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/4f9ec959d52544d99778ec6ad04d7453f9d634db/src/hatty/routing.cr#L22" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/routing.cr#L22" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="post(resource,headers:HTTP::Headers?=nil,body:String?=nil):Hatty::Testing::Response-class-method">
+      <div class="signature">
+        
+        def <strong>post</strong>(resource, headers : HTTP::Headers? = <span class="n">nil</span>, body : String? = <span class="n">nil</span>) : <a href="Hatty/Testing/Response.html">Hatty::Testing::Response</a>
+
+        <a class="method-permalink" href="#post%28resource%2Cheaders%3AHTTP%3A%3AHeaders%3F%3Dnil%2Cbody%3AString%3F%3Dnil%29%3AHatty%3A%3ATesting%3A%3AResponse-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sends a <code>POST</code> requests for <em>resource</em>.</p>
+
+<p><span class="flag purple">NOTE</span>  Only available by importing <code>hatty/testing</code>.</p>
+
+<pre><code>post <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  response.send_status <span class="n">401</span>
+<span class="k">end</span>
+response <span class="o">=</span> post <span class="s">&quot;/&quot;</span>
+response.status_code <span class="c"># -&gt; 401</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/testing/testing.cr#L79" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -266,7 +420,33 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/4f9ec959d52544d99778ec6ad04d7453f9d634db/src/hatty/routing.cr#L27" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/routing.cr#L27" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="put(resource,headers:HTTP::Headers?=nil,body:String?=nil):Hatty::Testing::Response-class-method">
+      <div class="signature">
+        
+        def <strong>put</strong>(resource, headers : HTTP::Headers? = <span class="n">nil</span>, body : String? = <span class="n">nil</span>) : <a href="Hatty/Testing/Response.html">Hatty::Testing::Response</a>
+
+        <a class="method-permalink" href="#put%28resource%2Cheaders%3AHTTP%3A%3AHeaders%3F%3Dnil%2Cbody%3AString%3F%3Dnil%29%3AHatty%3A%3ATesting%3A%3AResponse-class-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Sends a <code>PUT</code> requests for <em>resource</em>.</p>
+
+<p><span class="flag purple">NOTE</span>  Only available by importing <code>hatty/testing</code>.</p>
+
+<pre><code>put <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  response.send_status <span class="n">401</span>
+<span class="k">end</span>
+response <span class="o">=</span> put <span class="s">&quot;/&quot;</span>
+response.status_code <span class="c"># -&gt; 401</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/testing/testing.cr#L105" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -282,7 +462,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/4f9ec959d52544d99778ec6ad04d7453f9d634db/src/hatty/routing.cr#L42" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/routing.cr#L42" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -314,7 +494,7 @@ status <span class="k">do</span> <span class="o">|</span>code, request, response
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/4f9ec959d52544d99778ec6ad04d7453f9d634db/src/hatty/routing.cr#L62" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/routing.cr#L62" target="_blank">View source</a>]
         
       </div>
     </div>

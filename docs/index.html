@@ -70,6 +70,21 @@
       
     </li>
   
+  <li class="parent " data-id="github.com/semlette/hatty/Hatty/Testing" data-name="hatty::testing">
+      <a href="Hatty/Testing.html">Testing</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/semlette/hatty/Hatty/Testing/Response" data-name="hatty::testing::response">
+      <a href="Hatty/Testing/Response.html">Response</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
 </ul>
 
       
@@ -186,6 +201,39 @@ status <span class="n">404</span> <span class="k">do</span> <span class="o">|</s
 <p><a href="https://semlette.github.io/hatty/toplevel.html#status%28code%2C%26handler%3AHatty%3A%3AHandler%29-class-method" target="_blank">API documentation for <code>status</code></a></p>
 
 <p><a href="https://semlette.github.io/hatty/Hatty/Response#send_status%28status_code%29%3ANil-instance-method" target="_blank">API documentation for <code>Response#send_status</code></a></p>
+
+<h2>Testing</h2>
+
+<p>Hatty comes with a testing module which helps you test your routes. Inspired by <a href="https://github.com/kemalcr/spec-kemal" target="_blank">spec-kemal</a>, requiring <code>hatty/testing</code> imports methods that allows you to test your routes.</p>
+
+<p>Methods</p>
+
+<ul><li><a href="https://semlette.github.io/hatty/toplevel#get%28resource%2Cheaders%3AHTTP%3A%3AHeaders%3F%3Dnil%2Cbody%3AString%3F%3Dnil%29%3AHatty%3A%3ATesting%3A%3AResponse-class-method" target="_blank"><code>get</code></a></li><li><a href="https://semlette.github.io/hatty/toplevel#post%28resource%2Cheaders%3AHTTP%3A%3AHeaders%3F%3Dnil%2Cbody%3AString%3F%3Dnil%29%3AHatty%3A%3ATesting%3A%3AResponse-class-method" target="_blank"><code>post</code></a></li><li><a href="https://semlette.github.io/hatty/toplevel#put%28resource%2Cheaders%3AHTTP%3A%3AHeaders%3F%3Dnil%2Cbody%3AString%3F%3Dnil%29%3AHatty%3A%3ATesting%3A%3AResponse-class-method" target="_blank"><code>put</code></a></li><li><a href="https://semlette.github.io/hatty/toplevel#delete%28resource%2Cheaders%3AHTTP%3A%3AHeaders%3F%3Dnil%2Cbody%3AString%3F%3Dnil%29%3AHatty%3A%3ATesting%3A%3AResponse-class-method" target="_blank"><code>delete</code></a></li><li><a href="https://semlette.github.io/hatty/toplevel#patch%28resource%2Cheaders%3AHTTP%3A%3AHeaders%3F%3Dnil%2Cbody%3AString%3F%3Dnil%29%3AHatty%3A%3ATesting%3A%3AResponse-class-method" target="_blank"><code>patch</code></a></li></ul>
+
+<p><strong><code>app.cr</code></strong></p>
+
+<pre><code class='language-crystal'><span class="k">require</span> <span class="s">&quot;hatty&quot;</span>
+
+get <span class="s">&quot;/api&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  response.send_json({ <span class="s">&quot;data&quot;</span> => <span class="s">&quot;insert data here&quot;</span> })
+<span class="k">end</span>
+
+<span class="t">Hatty</span>.start</code></pre>
+
+<p><strong><code>app_spec.cr</code></strong></p>
+
+<pre><code class='language-crystal'><span class="k">require</span> <span class="s">&quot;./app&quot;</span>
+<span class="k">require</span> <span class="s">&quot;hatty/testing&quot;</span>
+
+describe <span class="s">&quot;GET /api&quot;</span> <span class="k">do</span>
+  it <span class="s">&quot;returns json&quot;</span> <span class="k">do</span>
+    <span class="c">#         `get` along with other methods are provided by `hatty/testing`</span>
+    response <span class="o">=</span> get <span class="s">&quot;/api&quot;</span>
+
+    response.status_code.should eq <span class="n">200</span>
+    response.json?.should be_true
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
 </div>
 </body>
 </html>

@@ -54,22 +54,67 @@ end
 
 # Create methods for testing the routes
 
+# Sends a `GET` requests for *resource*.
+# NOTE: Only available by importing `hatty/testing`.
+# ```
+# get "/" do |request, response|
+#   response.send_status 401
+# end
+# response = get "/"
+# response.status_code # -> 401
+# ```
 def get(resource, headers : HTTP::Headers? = nil, body : String? = nil) : Hatty::Testing::Response
   create_test_response("GET", resource, headers, body)
 end
 
+# Sends a `POST` requests for *resource*.
+# NOTE: Only available by importing `hatty/testing`.
+# ```
+# post "/" do |request, response|
+#   response.send_status 401
+# end
+# response = post "/"
+# response.status_code # -> 401
+# ```
 def post(resource, headers : HTTP::Headers? = nil, body : String? = nil) : Hatty::Testing::Response
   create_test_response("POST", resource, headers, body)
 end
 
+# Sends a `DELETE` requests for *resource*.
+# NOTE: Only available by importing `hatty/testing`.
+# ```
+# delete "/" do |request, response|
+#   response.send_status 401
+# end
+# response = delete "/"
+# response.status_code # -> 401
+# ```
 def delete(resource, headers : HTTP::Headers? = nil, body : String? = nil) : Hatty::Testing::Response
   create_test_response("DELETE", resource, headers, body)
 end
 
+# Sends a `PUT` requests for *resource*.
+# NOTE: Only available by importing `hatty/testing`.
+# ```
+# put "/" do |request, response|
+#   response.send_status 401
+# end
+# response = put "/"
+# response.status_code # -> 401
+# ```
 def put(resource, headers : HTTP::Headers? = nil, body : String? = nil) : Hatty::Testing::Response
   create_test_response("PUT", resource, headers, body)
 end
 
+# Sends a `PATCH` requests for *resource*.
+# NOTE: Only available by importing `hatty/testing`.
+# ```
+# patch "/" do |request, response|
+#   response.send_status 401
+# end
+# response = patch "/"
+# response.status_code # -> 401
+# ```
 def patch(resource, headers : HTTP::Headers? = nil, body : String? = nil) : Hatty::Testing::Response
   create_test_response("PATCH", resource, headers, body)
 end
