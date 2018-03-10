@@ -82,5 +82,13 @@ module Hatty
     private def combine(method, path)
       "#{method} #{path}"
     end
+
+    # :nodoc:
+    def i_want_to_clear_all_routes
+      @@tree = Radix::Tree(String).new
+      @@routes.clear
+      @@statuses.clear
+      @@global_status_handler = nil
+    end
   end
 end

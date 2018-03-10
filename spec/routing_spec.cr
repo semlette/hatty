@@ -1,5 +1,3 @@
-server = Hatty::Server.new(3000)
-
 describe "get" do
   it "listens for GET requests" do
     called = false
@@ -9,7 +7,7 @@ describe "get" do
     end
 
     context = create_context(method: "GET", resource: "/get-test")
-    server.handle_request(context)
+    Hatty::Testing::TestServer.server.handle_request(context)
 
     called.should eq true
   end
@@ -24,7 +22,7 @@ describe "post" do
     end
 
     context = create_context(method: "POST", resource: "/post-test")
-    server.handle_request(context)
+    Hatty::Testing::TestServer.server.handle_request(context)
 
     called.should eq true
   end
@@ -39,7 +37,7 @@ describe "put" do
     end
 
     context = create_context(method: "PUT", resource: "/put-test")
-    server.handle_request(context)
+    Hatty::Testing::TestServer.server.handle_request(context)
 
     called.should eq true
   end
@@ -54,7 +52,7 @@ describe "delete" do
     end
 
     context = create_context(method: "DELETE", resource: "/delete-test")
-    server.handle_request(context)
+    Hatty::Testing::TestServer.server.handle_request(context)
 
     called.should eq true
   end
@@ -69,7 +67,7 @@ describe "patch" do
     end
 
     context = create_context(method: "PATCH", resource: "/patch-test")
-    server.handle_request(context)
+    Hatty::Testing::TestServer.server.handle_request(context)
 
     called.should eq true
   end

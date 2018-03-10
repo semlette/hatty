@@ -1,8 +1,8 @@
 require "./spec_helper"
 
-class TestMapping
+private class TestMapping
   JSON.mapping({
-    hello: String
+    hello: String,
   })
 end
 
@@ -58,7 +58,7 @@ describe Hatty::Request do
     end
   end
 
-  describe "#body(mappings)" do 
+  describe "#body(mappings)" do
     it "returns nil if there is no body" do
       post_request = create_request method: "POST"
       request = Hatty::Request.new(post_request)
@@ -97,22 +97,23 @@ describe Hatty::Request do
     end
   end
 
-  get "/users/:id" do
-  end
-
   describe "#params" do
     it "returns a hash with the parameters" do
+      get "/users/:id" do
+      end
       http_request = create_request resource: "/users/1"
       request = Hatty::Request.new(http_request)
-      request.params.should eq({ "id" => "1" })
+      request.params.should eq({"id" => "1"})
     end
   end
 
   describe "#parameters" do
     it "returns a hash with the parameters" do
+      get "/users/:id" do
+      end
       http_request = create_request resource: "/users/3"
       request = Hatty::Request.new(http_request)
-      request.parameters.should eq({ "id" => "3" })
+      request.parameters.should eq({"id" => "3"})
     end
   end
 
@@ -123,7 +124,7 @@ describe Hatty::Request do
 
       http_request = create_request resource: "/query?awesome=true&works=hopefully"
       request = Hatty::Request.new(http_request)
-      request.query.should eq({ "awesome" => "true", "works" => "hopefully" })
+      request.query.should eq({"awesome" => "true", "works" => "hopefully"})
 
       second_http_request = create_request resource: "/query"
       second_request = Hatty::Request.new(second_http_request)

@@ -32,7 +32,7 @@ describe Hatty::Response do
       response = Hatty::Response.new(http_response)
       response.status_code.should eq 200
     end
-  
+
     it "returns the status code" do
       http_response = create_response
       response = Hatty::Response.new(http_response)
@@ -57,7 +57,7 @@ describe Hatty::Response do
       response = Hatty::Response.new(http_response)
       response.headers.should be_a HTTP::Headers
     end
-  
+
     it "returns the response' headers" do
       http_response = create_response
       response = Hatty::Response.new(http_response)
@@ -92,68 +92,68 @@ describe Hatty::Response do
   end
 
   describe "#send_json" do
-     # TODO: Test if the response is actually being sent
+    # TODO: Test if the response is actually being sent
 
-     it "raises if called more than once" do
+    it "raises if called more than once" do
       expect_raises Hatty::Response::ExhaustedError do
         http_response = create_response
         response = Hatty::Response.new(http_response)
-        response.send_json({ "times" => 1 })
-        response.send_json({ "times" => 2 })
+        response.send_json({"times" => 1})
+        response.send_json({"times" => 2})
       end
     end
 
     it "sets the content type to `application/json`" do
       http_response = create_response
       response = Hatty::Response.new(http_response)
-      response.send_json({ "abc" => 123 })
+      response.send_json({"abc" => 123})
       response.headers["Content-Type"].should eq "application/json"
     end
-  
+
     it "sets `@sent` to true" do
       http_response = create_response
       response = Hatty::Response.new(http_response)
-      response.send_json({ "abc" => 123 })
+      response.send_json({"abc" => 123})
       response.hatty_sent.should be_true
     end
 
     it "returns nil" do
       http_response = create_response
       response = Hatty::Response.new(http_response)
-      response.send_json({ "abc" => 123 }).should eq nil
+      response.send_json({"abc" => 123}).should eq nil
     end
   end
 
   describe "#send_json(json : String)" do
-     # TODO: Test if the response is actually being sent
+    # TODO: Test if the response is actually being sent
 
-     it "raises if called more than once" do
+    it "raises if called more than once" do
       expect_raises Hatty::Response::ExhaustedError do
         http_response = create_response
         response = Hatty::Response.new(http_response)
-        response.send_json({ "times" => 1 }.to_json)
-        response.send_json({ "times" => 2 }.to_json)
+        response.send_json({"times" => 1}.to_json)
+        response.send_json({"times" => 2}.to_json)
       end
     end
 
     it "sets the content type to `application/json`" do
       http_response = create_response
       response = Hatty::Response.new(http_response)
-      response.send_json({ "abc" => 123 }.to_json)
+      response.send_json({"abc" => 123}.to_json)
       response.headers["Content-Type"].should eq "application/json"
     end
-  
+
     it "sets `@sent` to true" do
       http_response = create_response
       response = Hatty::Response.new(http_response)
-      response.send_json({ "abc" => 123 }.to_json)
+      response.send_json({"abc" => 123}.to_json)
       response.hatty_sent.should be_true
     end
 
     it "returns nil" do
       http_response = create_response
       response = Hatty::Response.new(http_response)
-      response.send_json({ "abc" => 123 }.to_json).should eq nil
+      response.send_json({"abc" => 123}.to_json).should eq nil
     end
   end
 
@@ -175,7 +175,7 @@ describe Hatty::Response do
       response.send_text "Testing testing 123"
       response.headers["Content-Type"].should eq "text/plain"
     end
-  
+
     it "sets `@sent` to true" do
       http_response = create_response
       response = Hatty::Response.new(http_response)
@@ -199,7 +199,7 @@ describe Hatty::Response do
         response.send_status 404
       end
     end
-  
+
     it "sets `@hatty_send_status_code` to true" do
       http_response = create_response
       response = Hatty::Response.new(http_response)
