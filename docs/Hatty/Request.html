@@ -35,6 +35,11 @@
       
     </li>
   
+  <li class=" " data-id="github.com/semlette/hatty/Hatty/GlobalStatusHandler" data-name="hatty::globalstatushandler">
+      <a href="../Hatty/GlobalStatusHandler.html">GlobalStatusHandler</a>
+      
+    </li>
+  
   <li class=" " data-id="github.com/semlette/hatty/Hatty/Handler" data-name="hatty::handler">
       <a href="../Hatty/Handler.html">Handler</a>
       
@@ -62,6 +67,21 @@
   
   <li class=" " data-id="github.com/semlette/hatty/Hatty/Server" data-name="hatty::server">
       <a href="../Hatty/Server.html">Server</a>
+      
+    </li>
+  
+  <li class="parent " data-id="github.com/semlette/hatty/Hatty/Testing" data-name="hatty::testing">
+      <a href="../Hatty/Testing.html">Testing</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/semlette/hatty/Hatty/Testing/Response" data-name="hatty::testing::response">
+      <a href="../Hatty/Testing/Response.html">Response</a>
+      
+    </li>
+  
+</ul>
+
       
     </li>
   
@@ -103,7 +123,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/semlette/hatty/blob/122c775ac7259e3f8dc18180e4cf63f329070ae3/src/hatty/request.cr#L2" target="_blank">hatty/request.cr</a>
+      <a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/request.cr#L2" target="_blank">hatty/request.cr</a>
     
     <br/>
   
@@ -130,17 +150,12 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#body%28builder%3AJSON%3A%3ABuilder%29-instance-method" class="signature"><strong>#body</strong>(builder : JSON::Builder)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
         <a href="#body%28mappings%29-instance-method" class="signature"><strong>#body</strong>(mappings)</a>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#body-instance-method" class="signature"><strong>#body</strong></a>
+        <a href="#body%3AJSON%3A%3AAny%3F-instance-method" class="signature"><strong>#body</strong> : JSON::Any?</a>
         
       </li>
     
@@ -152,12 +167,21 @@
       <li class="entry-summary">
         <a href="#original%3AHTTP%3A%3ARequest-instance-method" class="signature"><strong>#original</strong> : HTTP::Request</a>
         
-          <div class="summary"><p>Returns the original request</p></div>
+          <div class="summary"><p>Returns the original request</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#parameters%3AHash%28String%2CString%29-instance-method" class="signature"><strong>#parameters</strong> : Hash(String, String)</a>
+        
+          <div class="summary"><p>Alias for <code><a href="../Hatty/Request.html#params%3AHash%28String%2CString%29-instance-method">#params</a></code></p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#params%3AHash%28String%2CString%29-instance-method" class="signature"><strong>#params</strong> : Hash(String, String)</a>
+        
+          <div class="summary"><p>Returns a hash with the url parameters.</p></div>
         
       </li>
     
@@ -167,9 +191,14 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#query%3AHash%28String%2CString%29-instance-method" class="signature"><strong>#query</strong> : Hash(String, String)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#url-instance-method" class="signature"><strong>#url</strong></a>
         
-          <div class="summary"><p>Alias for <code><a href="../Hatty/Request.html#path-instance-method">#path</a></code></p></div>
+          <div class="summary"><p>Alias for <code><a href="../Hatty/Request.html#path-instance-method">#path</a></code></p></div>
         
       </li>
     
@@ -217,7 +246,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/122c775ac7259e3f8dc18180e4cf63f329070ae3/src/hatty/request.cr#L5" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/request.cr#L10" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -228,22 +257,6 @@
 
 
   <h2>Instance Method Detail</h2>
-  
-    <div class="entry-detail" id="body(builder:JSON::Builder)-instance-method">
-      <div class="signature">
-        
-        def <strong>body</strong>(builder : JSON::Builder)
-
-        <a class="method-permalink" href="#body%28builder%3AJSON%3A%3ABuilder%29-instance-method">#</a>
-      </div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/semlette/hatty/blob/122c775ac7259e3f8dc18180e4cf63f329070ae3/src/hatty/request.cr#L25" target="_blank">View source</a>]
-        
-      </div>
-    </div>
   
     <div class="entry-detail" id="body(mappings)-instance-method">
       <div class="signature">
@@ -256,23 +269,23 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/122c775ac7259e3f8dc18180e4cf63f329070ae3/src/hatty/request.cr#L21" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/request.cr#L32" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="body-instance-method">
+    <div class="entry-detail" id="body:JSON::Any?-instance-method">
       <div class="signature">
         
-        def <strong>body</strong>
+        def <strong>body</strong> : JSON::Any?
 
-        <a class="method-permalink" href="#body-instance-method">#</a>
+        <a class="method-permalink" href="#body%3AJSON%3A%3AAny%3F-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/122c775ac7259e3f8dc18180e4cf63f329070ae3/src/hatty/request.cr#L17" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/request.cr#L22" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -288,7 +301,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/122c775ac7259e3f8dc18180e4cf63f329070ae3/src/hatty/request.cr#L13" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/request.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -301,12 +314,30 @@
         <a class="method-permalink" href="#original%3AHTTP%3A%3ARequest-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Returns the original request</p></div>
+        <div class="doc"><p>Returns the original request</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/122c775ac7259e3f8dc18180e4cf63f329070ae3/src/hatty/request.cr#L9" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/request.cr#L14" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="parameters:Hash(String,String)-instance-method">
+      <div class="signature">
+        
+        def <strong>parameters</strong> : Hash(String, String)
+
+        <a class="method-permalink" href="#parameters%3AHash%28String%2CString%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Alias for <code><a href="../Hatty/Request.html#params%3AHash%28String%2CString%29-instance-method">#params</a></code></p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/request.cr#L69" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -319,10 +350,19 @@
         <a class="method-permalink" href="#params%3AHash%28String%2CString%29-instance-method">#</a>
       </div>
       
+        <div class="doc"><p>Returns a hash with the url parameters.</p>
+
+<pre><code>get <span class="s">&quot;/users/:id&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  puts response.params[<span class="s">&quot;id&quot;</span>]
+<span class="k">end</span>
+
+<span class="c"># GET /users/3</span>
+<span class="c"># &gt; &quot;3&quot;</span></code></pre></div>
+      
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/122c775ac7259e3f8dc18180e4cf63f329070ae3/src/hatty/request.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/request.cr#L59" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -338,7 +378,23 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/122c775ac7259e3f8dc18180e4cf63f329070ae3/src/hatty/request.cr#L44" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/request.cr#L73" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="query:Hash(String,String)-instance-method">
+      <div class="signature">
+        
+        def <strong>query</strong> : Hash(String, String)
+
+        <a class="method-permalink" href="#query%3AHash%28String%2CString%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/request.cr#L39" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -351,12 +407,12 @@
         <a class="method-permalink" href="#url-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Alias for <code><a href="../Hatty/Request.html#path-instance-method">#path</a></code></p></div>
+        <div class="doc"><p>Alias for <code><a href="../Hatty/Request.html#path-instance-method">#path</a></code></p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/122c775ac7259e3f8dc18180e4cf63f329070ae3/src/hatty/request.cr#L49" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/request.cr#L78" target="_blank">View source</a>]
         
       </div>
     </div>

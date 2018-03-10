@@ -106,6 +106,57 @@ status 404 do |request, response|
 end
 ```
 
+#### Global status handler
+
+Instead of defining a status handler for every status code, you can define a Global Status Handler™. The global status handler will receive all status codes not handled by the status handlers. If you create a status handler for `404` and a global status handler, the global status handler will not receive `404` requests.
+
+```crystal
+status do |code, request, response|
+  response.send_text "Oops! Error code #{code}"
+end
+```
+
 [API documentation for `status`](https://semlette.github.io/hatty/toplevel.html#status%28code%2C%26handler%3AHatty%3A%3AHandler%29-class-method)
 
 [API documentation for `Response#send_status`](https://semlette.github.io/hatty/Hatty/Response#send_status%28status_code%29%3ANil-instance-method)
+
+## Testing
+
+Hatty comes with a testing module which helps you test your routes. Inspired by [spec-kemal](https://github.com/kemalcr/spec-kemal), requiring `hatty/testing` imports methods that allows you to test your routes.
+
+Methods
+
+* [`get`](https://semlette.github.io/hatty/toplevel#get%28resource%2Cheaders%3AHTTP%3A%3AHeaders%3F%3Dnil%2Cbody%3AString%3F%3Dnil%29%3AHatty%3A%3ATesting%3A%3AResponse-class-method)
+* [`post`](https://semlette.github.io/hatty/toplevel#post%28resource%2Cheaders%3AHTTP%3A%3AHeaders%3F%3Dnil%2Cbody%3AString%3F%3Dnil%29%3AHatty%3A%3ATesting%3A%3AResponse-class-method)
+* [`put`](https://semlette.github.io/hatty/toplevel#put%28resource%2Cheaders%3AHTTP%3A%3AHeaders%3F%3Dnil%2Cbody%3AString%3F%3Dnil%29%3AHatty%3A%3ATesting%3A%3AResponse-class-method)
+* [`delete`](https://semlette.github.io/hatty/toplevel#delete%28resource%2Cheaders%3AHTTP%3A%3AHeaders%3F%3Dnil%2Cbody%3AString%3F%3Dnil%29%3AHatty%3A%3ATesting%3A%3AResponse-class-method)
+* [`patch`](https://semlette.github.io/hatty/toplevel#patch%28resource%2Cheaders%3AHTTP%3A%3AHeaders%3F%3Dnil%2Cbody%3AString%3F%3Dnil%29%3AHatty%3A%3ATesting%3A%3AResponse-class-method)
+
+**`app.cr`**
+
+```crystal
+require "hatty"
+
+get "/api" do |request, response|
+  response.send_json({ "data" => "insert data here" })
+end
+
+Hatty.start
+```
+
+**`app_spec.cr`**
+
+```crystal
+require "./app"
+require "hatty/testing"
+
+describe "GET /api" do
+  it "returns json" do
+    #         `get` along with other methods are provided by `hatty/testing`
+    response = get "/api"
+
+    response.status_code.should eq 200
+    response.json?.should be_true
+  end
+end
+```
