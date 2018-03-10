@@ -4,6 +4,8 @@ version: 0.1.0
 authors:
   -  Andi Semler <andirobinsemler@gmail.com>
 
+description: A library for creating HTTP services in Crystal
+
 crystal: 0.24.1
 
 license: MIT
