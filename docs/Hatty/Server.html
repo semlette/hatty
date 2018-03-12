@@ -109,7 +109,7 @@
 
   <h2>Overview</h2>
 
-  <p>Override the Server#start method so it doesn't actually start the server.</p>
+  <p>Basically <code>HTTP::Server</code> but with routing.</p>
 
 
 
@@ -127,12 +127,12 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/server.cr#L2" target="_blank">hatty/server.cr</a>
+      <a href="https://github.com/semlette/hatty/blob/adf5faaa2503d97c15c8401b6b08ac4870d764b8/src/hatty/server.cr#L3" target="_blank">hatty/server.cr</a>
     
     <br/>
   
     
-      <a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/testing/testing.cr#L45" target="_blank">hatty/testing/testing.cr</a>
+      <a href="https://github.com/semlette/hatty/blob/adf5faaa2503d97c15c8401b6b08ac4870d764b8/src/hatty/testing/testing.cr#L46" target="_blank">hatty/testing/testing.cr</a>
     
     <br/>
   
@@ -145,7 +145,7 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#new%28port%29-class-method" class="signature"><strong>.new</strong>(port)</a>
+        <a href="#new%28port%3AInt32%29-class-method" class="signature"><strong>.new</strong>(port : Int32)</a>
         
       </li>
     
@@ -157,13 +157,6 @@
 
   <h2>Instance Method Summary</h2>
   <ul class="list-summary">
-    
-      <li class="entry-summary">
-        <a href="#handle_request%28context%29-instance-method" class="signature"><strong>#handle_request</strong>(context)</a>
-        
-          <div class="summary"><p><span class="flag purple">NOTE</span>  INTERNAL METHOD</p></div>
-        
-      </li>
     
       <li class="entry-summary">
         <a href="#native%3AHTTP%3A%3AServer-instance-method" class="signature"><strong>#native</strong> : HTTP::Server</a>
@@ -215,18 +208,18 @@
 
   <h2>Constructor Detail</h2>
   
-    <div class="entry-detail" id="new(port)-class-method">
+    <div class="entry-detail" id="new(port:Int32)-class-method">
       <div class="signature">
         
-        def self.<strong>new</strong>(port)
+        def self.<strong>new</strong>(port : Int32)
 
-        <a class="method-permalink" href="#new%28port%29-class-method">#</a>
+        <a class="method-permalink" href="#new%28port%3AInt32%29-class-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/testing/testing.cr#L46" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/adf5faaa2503d97c15c8401b6b08ac4870d764b8/src/hatty/server.cr#L6" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -237,24 +230,6 @@
 
 
   <h2>Instance Method Detail</h2>
-  
-    <div class="entry-detail" id="handle_request(context)-instance-method">
-      <div class="signature">
-        
-        def <strong>handle_request</strong>(context)
-
-        <a class="method-permalink" href="#handle_request%28context%29-instance-method">#</a>
-      </div>
-      
-        <div class="doc"><p><span class="flag purple">NOTE</span>  INTERNAL METHOD</p></div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/server.cr#L25" target="_blank">View source</a>]
-        
-      </div>
-    </div>
   
     <div class="entry-detail" id="native:HTTP::Server-instance-method">
       <div class="signature">
@@ -267,7 +242,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/server.cr#L11" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/adf5faaa2503d97c15c8401b6b08ac4870d764b8/src/hatty/server.cr#L12" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -285,7 +260,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/testing/testing.cr#L51" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/adf5faaa2503d97c15c8401b6b08ac4870d764b8/src/hatty/testing/testing.cr#L53" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -301,7 +276,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/58f19acbae5940bb1515002a57c5cb5bed34f2f5/src/hatty/server.cr#L20" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/adf5faaa2503d97c15c8401b6b08ac4870d764b8/src/hatty/server.cr#L21" target="_blank">View source</a>]
         
       </div>
     </div>
