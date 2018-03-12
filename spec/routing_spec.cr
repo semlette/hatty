@@ -7,7 +7,8 @@ describe "get" do
     end
 
     context = create_context(method: "GET", resource: "/get-test")
-    Hatty::Testing::TestServer.server.handle_request(context)
+    handler = Hatty::Handlers::Routing.new
+    handler.call(context)
 
     called.should eq true
   end
@@ -22,7 +23,8 @@ describe "post" do
     end
 
     context = create_context(method: "POST", resource: "/post-test")
-    Hatty::Testing::TestServer.server.handle_request(context)
+    handler = Hatty::Handlers::Routing.new
+    handler.call(context)
 
     called.should eq true
   end
@@ -37,7 +39,8 @@ describe "put" do
     end
 
     context = create_context(method: "PUT", resource: "/put-test")
-    Hatty::Testing::TestServer.server.handle_request(context)
+    handler = Hatty::Handlers::Routing.new
+    handler.call(context)
 
     called.should eq true
   end
@@ -52,7 +55,8 @@ describe "delete" do
     end
 
     context = create_context(method: "DELETE", resource: "/delete-test")
-    Hatty::Testing::TestServer.server.handle_request(context)
+    handler = Hatty::Handlers::Routing.new
+    handler.call(context)
 
     called.should eq true
   end
@@ -67,7 +71,8 @@ describe "patch" do
     end
 
     context = create_context(method: "PATCH", resource: "/patch-test")
-    Hatty::Testing::TestServer.server.handle_request(context)
+    handler = Hatty::Handlers::Routing.new
+    handler.call(context)
 
     called.should eq true
   end

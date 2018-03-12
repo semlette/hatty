@@ -1,7 +1,10 @@
 module Hatty
   class Configuration
     @disable_powered_by = false
-    property disable_powered_by
+    property disable_powered_by : Bool
+
+    @disable_logging = false
+    property disable_logging : Bool
   end
 
   # :nodoc:
