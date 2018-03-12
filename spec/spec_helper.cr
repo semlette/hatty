@@ -15,10 +15,6 @@ end
 
 # Override the Server#start method so it doesn't actually start the server.
 class Hatty::Server
-  def initialize(port)
-    @server = HTTP::Server.new(port) { }
-  end
-
   def start
   end
 end
@@ -43,7 +39,8 @@ def create_http_response(method = "GET", resource = "/", headers = HTTP::Headers
   io = IO::Memory.new
   response = HTTP::Server::Response.new(io)
   context = HTTP::Server::Context.new(request, response)
-  Hatty::Testing::TestServer.server.handle_request(context)
+  handler = Hatty::Handlers::Routing.new
+  handler.call(context)
   response.close
   io.rewind
   HTTP::Client::Response.from_io(io, decompress: false)

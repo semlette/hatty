@@ -21,7 +21,8 @@ private def create_test_response(method, resource, headers, body) : Hatty::Testi
   response = HTTP::Server::Response.new(io)
   # Create context and pass it to the server
   context = HTTP::Server::Context.new(request, response)
-  TestServer.server.handle_request(context)
+  handler = Hatty::Handlers::Routing.new
+  handler.call(context)
   # Do some stuff I don't understand. But atleast the Kemal authors do.
   response.close
   io.rewind
@@ -44,13 +45,8 @@ end
 # Override the Server#start method so it doesn't actually start the server.
 
 class Hatty::Server
-  # :nodoc:
-  def initialize(port)
-    @server = HTTP::Server.new(port) {}
-    TestServer.server = self
-  end
-  
   def start
+    TestServer.server = self
   end
 end
 
