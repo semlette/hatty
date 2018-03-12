@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  build:
+  test:
     docker:
       - image: crystallang/crystal:0.24.1
     steps:
@@ -12,3 +12,21 @@ jobs:
       - run:
           name: Run tests
           command: crystal spec
+  test-in-release:
+    docker:
+      - image: crystallang/crystal:0.24.1
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: crystal deps
+      - run:
+          name: Run tests in release mode
+          command: crystal spec --release
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
+      - test-in-release
