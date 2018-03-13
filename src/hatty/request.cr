@@ -8,6 +8,8 @@ module Hatty
     @parsed_body = false
     @form = {} of String => String
     @parsed_form = false
+    @files = {} of String => Tempfile
+    @parsed_files = false
 
     def initialize(@request : HTTP::Request)
     end
@@ -41,16 +43,47 @@ module Hatty
     def form : Hash(String, String)?
       is_formdata = @request.headers["Content-Type"].starts_with?("multipart/form-data")
       if !@parsed_form && @request.body && is_formdata
-        HTTP::FormData.parse(@request) do |part|
-          @form[part.name] = part.body.gets_to_end
-        end
-        @parsed_form = true
+        parse_form
         @form
       elsif @parsed_form
         @form
       else
         nil
       end
+    end
+
+    def files : Hash(String, Tempfile)?
+      is_formdata = @request.headers["Content-Type"].starts_with?("multipart/form-data")
+      if !@parsed_files && @request.body && is_formdata
+        parse_files
+        @files
+      elsif @parsed_files
+        @files
+      else
+        nil
+      end
+    end
+
+    private def parse_form
+      HTTP::FormData.parse(@request) do |part|
+        next unless part
+        filename = part.filename
+        next if filename
+        @form[part.name] = part.body.gets_to_end
+      end
+      @parsed_form = true
+    end
+
+    private def parse_files
+      HTTP::FormData.parse(@request) do |part|
+        next unless part
+        filename = part.filename
+        next unless filename
+        @files[part.name] = Tempfile.open filename.not_nil! do |file|
+          IO.copy(part.body, file)
+        end
+      end
+      @parsed_files = true
     end
 
     def query : Hash(String, String)

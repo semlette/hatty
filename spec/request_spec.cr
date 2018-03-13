@@ -101,9 +101,9 @@ describe Hatty::Request do
     it "returns a hash with the formdata" do
       # Create formdata
       io = IO::Memory.new
-      formdata = HTTP::FormData::Builder.new(io, "ILOVEHATTY")
-      formdata.field "hello", "world"
-      formdata.finish
+      formdata = HTTP::FormData.build(io, "ILOVEHATTY") do |builder|
+        builder.field "hello", "world"
+      end
 
       headers = HTTP::Headers{"Content-Type" => "multipart/form-data; boundary=ILOVEHATTY"}
       post_request = create_request method: "POST", headers: headers, body: io.to_s
@@ -115,9 +115,9 @@ describe Hatty::Request do
     it "returns nil if the content type is not multipart/form-data" do
       # Create formdata
       io = IO::Memory.new
-      formdata = HTTP::FormData::Builder.new(io, "ILOVEHATTY")
-      formdata.field "hello", "world"
-      formdata.finish
+      formdata = HTTP::FormData.build(io, "ILOVEHATTY") do |builder|
+        builder.field "hello", "world"
+      end
 
       headers = HTTP::Headers{"Content-Type" => "application/json"}
       post_request = create_request method: "POST", headers: headers, body: io.to_s
@@ -137,9 +137,9 @@ describe Hatty::Request do
     it "doesn't stop returning" do
       # Create formdata
       io = IO::Memory.new
-      formdata = HTTP::FormData::Builder.new(io, "ILOVEHATTY")
-      formdata.field "hello", "world"
-      formdata.finish
+      formdata = HTTP::FormData.build(io, "ILOVEHATTY") do |builder|
+        builder.field "hello", "world"
+      end
 
       headers = HTTP::Headers{"Content-Type" => "multipart/form-data; boundary=ILOVEHATTY"}
       post_request = create_request method: "POST", headers: headers, body: io.to_s
@@ -148,6 +148,77 @@ describe Hatty::Request do
       request.form.should eq({"hello" => "world"})
       request.form.should eq({"hello" => "world"})
       request.form.should eq({"hello" => "world"})
+    end
+  end
+
+  describe "#files" do
+    it "returns a hash with the formdata's files" do
+      # Create formdata
+      io = IO::Memory.new
+      formdata = HTTP::FormData.build(io, "ILOVEHATTY") do |builder|
+        file = IO::Memory.new("file contents")
+        builder.file("upload", file, HTTP::FormData::FileMetadata.new(filename: "test.txt"))
+      end
+
+      headers = HTTP::Headers{"Content-Type" => "multipart/form-data; boundary=ILOVEHATTY"}
+      post_request = create_request method: "POST", headers: headers, body: io.to_s
+      request = Hatty::Request.new(post_request)
+
+      request.files.not_nil!.should be_a Hash(String, Tempfile)
+      request.files.not_nil!.has_key?("upload").should be_true
+      request.files.not_nil!.["upload"]?.should be_a Tempfile
+      request.files.not_nil!.keys.size.should eq 1
+
+      request.files.not_nil!["upload"].unlink
+    end
+
+    it "returns nil if the content type is *not* multipart/form-data" do
+      # Create formdata
+      io = IO::Memory.new
+      formdata = HTTP::FormData.build(io, "ILOVEHATTY") do |builder|
+        file = IO::Memory.new("file contents")
+        builder.file("upload", file, HTTP::FormData::FileMetadata.new(filename: "test.txt"))
+      end
+
+      headers = HTTP::Headers{"Content-Type" => "application/json"}
+      post_request = create_request method: "POST", headers: headers, body: io.to_s
+      request = Hatty::Request.new(post_request)
+
+      request.files.should eq nil
+    end
+
+    it "returns nil if the body is empty" do
+      # Create formdata
+      io = IO::Memory.new
+      formdata = HTTP::FormData.build(io, "ILOVEHATTY") do |builder|
+        file = IO::Memory.new("file contents")
+        builder.file("upload", file, HTTP::FormData::FileMetadata.new(filename: "test.txt"))
+      end
+
+      headers = HTTP::Headers{"Content-Type" => "multipart/form-data; boundary=ILOVEHATTY"}
+      post_request = create_request method: "POST", headers: headers, body: nil
+      request = Hatty::Request.new(post_request)
+
+      request.files.should eq nil
+    end
+
+    it "doesn't stop returning" do
+      # Create formdata
+      io = IO::Memory.new
+      formdata = HTTP::FormData.build(io, "ILOVEHATTY") do |builder|
+        file = IO::Memory.new("file contents")
+        builder.file("upload", file, HTTP::FormData::FileMetadata.new(filename: "test.txt"))
+      end
+
+      headers = HTTP::Headers{"Content-Type" => "multipart/form-data; boundary=ILOVEHATTY"}
+      post_request = create_request method: "POST", headers: headers, body: io.to_s
+      request = Hatty::Request.new(post_request)
+
+      request.files.not_nil!["upload"].should be_a Tempfile
+      request.files.not_nil!["upload"].should be_a Tempfile
+      request.files.not_nil!["upload"].should be_a Tempfile
+
+      request.files.not_nil!["upload"].unlink
     end
   end
 
