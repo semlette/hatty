@@ -3,7 +3,7 @@ require "../src/hatty/testing"
 
 private class JSONMapping
   JSON.mapping({
-    hello: String
+    hello: String,
   })
 end
 
@@ -16,7 +16,7 @@ describe "Testing" do
         response.original.should be_a HTTP::Client::Response
       end
     end
-    
+
     describe "#status_code" do
       it "returns the status code" do
         get "/testing-response-status-code" do |request, response|
@@ -32,7 +32,7 @@ describe "Testing" do
         second_response.status_code.should eq 404
       end
     end
-    
+
     describe "#body" do
       it "returns the response body" do
         json = {
@@ -119,7 +119,6 @@ describe "Testing" do
         response.json?.should be_false
       end
     end
-    
   end
 
   describe "get" do
@@ -132,12 +131,12 @@ describe "Testing" do
       response.status_code.should eq 200
     end
   end
-  
+
   describe "post" do
     it "returns a Hatty::Testing::Response" do
       post "/testing-fake-post" do
       end
-      
+
       response = post "/testing-fake-post"
       response.should be_a Hatty::Testing::Response
       response.status_code.should eq 200

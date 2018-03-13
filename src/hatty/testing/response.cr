@@ -7,7 +7,7 @@ class Hatty::Testing::Response
   def original : HTTP::Client::Response
     @request
   end
-  
+
   def status_code
     @request.status_code
   end
