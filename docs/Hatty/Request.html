@@ -45,6 +45,26 @@
       
     </li>
   
+  <li class="parent " data-id="github.com/semlette/hatty/Hatty/Handlers" data-name="hatty::handlers">
+      <a href="../Hatty/Handlers.html">Handlers</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/semlette/hatty/Hatty/Handlers/Logging" data-name="hatty::handlers::logging">
+      <a href="../Hatty/Handlers/Logging.html">Logging</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/semlette/hatty/Hatty/Handlers/Routing" data-name="hatty::handlers::routing">
+      <a href="../Hatty/Handlers/Routing.html">Routing</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
   <li class=" current" data-id="github.com/semlette/hatty/Hatty/Request" data-name="hatty::request">
       <a href="../Hatty/Request.html">Request</a>
       
@@ -123,7 +143,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/semlette/hatty/blob/adf5faaa2503d97c15c8401b6b08ac4870d764b8/src/hatty/request.cr#L2" target="_blank">hatty/request.cr</a>
+      <a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/request.cr#L2" target="_blank">hatty/request.cr</a>
     
     <br/>
   
@@ -160,6 +180,16 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#files%3AHash%28String%2CTempfile%29%3F-instance-method" class="signature"><strong>#files</strong> : Hash(String, Tempfile)?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#form%3AHash%28String%2CString%29%3F-instance-method" class="signature"><strong>#form</strong> : Hash(String, String)?</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#method-instance-method" class="signature"><strong>#method</strong></a>
         
       </li>
@@ -167,14 +197,14 @@
       <li class="entry-summary">
         <a href="#original%3AHTTP%3A%3ARequest-instance-method" class="signature"><strong>#original</strong> : HTTP::Request</a>
         
-          <div class="summary"><p>Returns the original request</p></div>
+          <div class="summary"><p>Returns the original request</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#parameters%3AHash%28String%2CString%29-instance-method" class="signature"><strong>#parameters</strong> : Hash(String, String)</a>
         
-          <div class="summary"><p>Alias for <code><a href="../Hatty/Request.html#params%3AHash%28String%2CString%29-instance-method">#params</a></code></p></div>
+          <div class="summary"><p>Alias for <code><a href="../Hatty/Request.html#params%3AHash%28String%2CString%29-instance-method">#params</a></code></p></div>
         
       </li>
     
@@ -198,7 +228,7 @@
       <li class="entry-summary">
         <a href="#url-instance-method" class="signature"><strong>#url</strong></a>
         
-          <div class="summary"><p>Alias for <code><a href="../Hatty/Request.html#path-instance-method">#path</a></code></p></div>
+          <div class="summary"><p>Alias for <code><a href="../Hatty/Request.html#path-instance-method">#path</a></code></p></div>
         
       </li>
     
@@ -246,7 +276,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/adf5faaa2503d97c15c8401b6b08ac4870d764b8/src/hatty/request.cr#L10" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/request.cr#L14" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -269,7 +299,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/adf5faaa2503d97c15c8401b6b08ac4870d764b8/src/hatty/request.cr#L32" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/request.cr#L36" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -285,7 +315,39 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/adf5faaa2503d97c15c8401b6b08ac4870d764b8/src/hatty/request.cr#L22" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/request.cr#L26" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="files:Hash(String,Tempfile)?-instance-method">
+      <div class="signature">
+        
+        def <strong>files</strong> : Hash(String, Tempfile)?
+
+        <a class="method-permalink" href="#files%3AHash%28String%2CTempfile%29%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/request.cr#L55" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="form:Hash(String,String)?-instance-method">
+      <div class="signature">
+        
+        def <strong>form</strong> : Hash(String, String)?
+
+        <a class="method-permalink" href="#form%3AHash%28String%2CString%29%3F-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/request.cr#L43" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -301,7 +363,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/adf5faaa2503d97c15c8401b6b08ac4870d764b8/src/hatty/request.cr#L18" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/request.cr#L22" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -314,12 +376,12 @@
         <a class="method-permalink" href="#original%3AHTTP%3A%3ARequest-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Returns the original request</p></div>
+        <div class="doc"><p>Returns the original request</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/adf5faaa2503d97c15c8401b6b08ac4870d764b8/src/hatty/request.cr#L14" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/request.cr#L18" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -332,12 +394,12 @@
         <a class="method-permalink" href="#parameters%3AHash%28String%2CString%29-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Alias for <code><a href="../Hatty/Request.html#params%3AHash%28String%2CString%29-instance-method">#params</a></code></p></div>
+        <div class="doc"><p>Alias for <code><a href="../Hatty/Request.html#params%3AHash%28String%2CString%29-instance-method">#params</a></code></p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/adf5faaa2503d97c15c8401b6b08ac4870d764b8/src/hatty/request.cr#L69" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/request.cr#L119" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -362,7 +424,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/adf5faaa2503d97c15c8401b6b08ac4870d764b8/src/hatty/request.cr#L59" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/request.cr#L109" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -378,7 +440,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/adf5faaa2503d97c15c8401b6b08ac4870d764b8/src/hatty/request.cr#L73" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/request.cr#L123" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -394,7 +456,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/adf5faaa2503d97c15c8401b6b08ac4870d764b8/src/hatty/request.cr#L39" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/request.cr#L89" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -407,12 +469,12 @@
         <a class="method-permalink" href="#url-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Alias for <code><a href="../Hatty/Request.html#path-instance-method">#path</a></code></p></div>
+        <div class="doc"><p>Alias for <code><a href="../Hatty/Request.html#path-instance-method">#path</a></code></p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/adf5faaa2503d97c15c8401b6b08ac4870d764b8/src/hatty/request.cr#L78" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/request.cr#L128" target="_blank">View source</a>]
         
       </div>
     </div>
