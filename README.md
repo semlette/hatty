@@ -2,13 +2,19 @@
 
 A library for creating HTTP services in Crystal
 
-> WORK IN PROGRESS. Please don't use this in production, it will probably break. I actually don't think it will, but I don't promise anything.
+## Read this
 
-To-do
+This library is not ready for production use.
 
-* [multipart/form-data support](https://github.com/semlette/hatty/tree/formdata)
-* websockets
-* [Add suggestion](https://github.com/semlette/hatty/issues/new)
+1. It's missing a lot of methods (most of them can be replaced by manipulating `Request#original`, `Response#original`)
+2. `multipart/form-data` related methods are currently **broken**
+
+### Things I want to add
+
+* `Response#redirect`
+* Cookies
+* Sessions
+* Rendering
 
 ---
 
