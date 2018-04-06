@@ -11,7 +11,6 @@ This library is not ready for production use.
 
 ### Things I want to add
 
-* `Response#redirect`
 * Cookies
 * Sessions
 * Rendering

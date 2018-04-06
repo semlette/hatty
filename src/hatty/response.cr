@@ -102,6 +102,20 @@ module Hatty
       @hatty_send_status_code = true
     end
 
+    # Redirects to *location*.
+    # ```
+    # get "/article/:id" do |request, response|
+    #   response.redirect("/new-article-url/#{request.params["id"]}")
+    # end
+    # ```
+    def redirect(to location : String) : Nil
+      # Raise if something has already been sent
+      raise ExhaustedError.new if @sent
+      @status_code = 301
+      @response.headers["Location"] = location
+      @sent = true
+    end
+
     # NOTE: INTERNAL PROPERTY.
     # This property tells Hatty if it should forward the request
     # to a status handler.

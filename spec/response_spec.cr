@@ -214,6 +214,44 @@ describe Hatty::Response do
     end
   end
 
+  describe "#redirect" do
+    it "sets the status code to `301`" do
+      http_response = create_response
+      response = Hatty::Response.new(http_response)
+      response.redirect("/test")
+      response.status_code.should eq 301
+    end
+
+    it "sets the location header" do
+      http_response = create_response
+      response = Hatty::Response.new(http_response)
+      response.redirect("/test")
+      response.headers["Location"]?.should eq "/test"
+    end
+
+    it "raises if called more than once" do
+      expect_raises Hatty::Response::ExhaustedError do
+        http_response = create_response
+        response = Hatty::Response.new(http_response)
+        response.redirect("/abc")
+        response.redirect("/def")
+      end
+    end
+
+    it "sets `#hatty_sent` to true" do
+    http_response = create_response
+    response = Hatty::Response.new(http_response)
+    response.redirect("/test")
+    response.hatty_sent.should eq true
+    end
+
+    it "returns nil" do
+      http_response = create_response
+      response = Hatty::Response.new(http_response)
+      response.redirect("/test").should eq nil
+    end
+  end
+  
   describe "#hatty_send_status_code" do
     it "returns a boolean" do
       http_response = create_response
@@ -229,4 +267,5 @@ describe Hatty::Response do
       response.hatty_sent.should be_a Bool
     end
   end
+
 end
