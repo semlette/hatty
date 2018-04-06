@@ -45,7 +45,8 @@ module Hatty
     end
 
     def form : Hash(String, String)?
-      is_formdata = @request.headers["Content-Type"].starts_with?("multipart/form-data")
+      content_type = @request.headers["Content-Type"]?
+      is_formdata = content_type && content_type.starts_with?("multipart/form-data")
       if !@parsed_form && @request.body && is_formdata
         parse_form
         @form
@@ -57,7 +58,8 @@ module Hatty
     end
 
     def files : Hash(String, Tempfile)?
-      is_formdata = @request.headers["Content-Type"].starts_with?("multipart/form-data")
+      content_type = @request.headers["Content-Type"]?
+      is_formdata = content_type && content_type.starts_with?("multipart/form-data")
       if !@parsed_files && @request.body && is_formdata
         parse_files
         @files

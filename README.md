@@ -7,7 +7,6 @@ A library for creating HTTP services in Crystal
 This library is not ready for production use.
 
 1. It's missing a lot of methods (most of them can be replaced by manipulating `Request#original`, `Response#original`)
-2. `multipart/form-data` related methods are currently **broken**
 
 ### Things I want to add
 

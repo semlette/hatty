@@ -6,6 +6,8 @@ private class TestMapping
   })
 end
 
+crystal_logo = File.open("./spec/crystal.jpg")
+
 describe Hatty::Request do
   describe "#original" do
     it "returns the original `HTTP::Request`" do
@@ -166,6 +168,7 @@ describe Hatty::Request do
       formdata = HTTP::FormData.build(io, "ILOVEHATTY") do |builder|
         file = IO::Memory.new("file contents")
         builder.file("upload", file, HTTP::FormData::FileMetadata.new(filename: "test.txt"))
+        builder.file("upload2", crystal_logo, HTTP::FormData::FileMetadata.new(filename: "crystal.jpg"))
       end
 
       headers = HTTP::Headers{"Content-Type" => "multipart/form-data; boundary=ILOVEHATTY"}
@@ -174,10 +177,11 @@ describe Hatty::Request do
 
       request.files.not_nil!.should be_a Hash(String, Tempfile)
       request.files.not_nil!.has_key?("upload").should be_true
-      request.files.not_nil!.["upload"]?.should be_a Tempfile
-      request.files.not_nil!.keys.size.should eq 1
+      request.files.not_nil!.has_key?("upload2").should be_true
+      request.files.not_nil!.keys.size.should eq 2
 
       request.files.not_nil!["upload"].unlink
+      request.files.not_nil!["upload2"].unlink
     end
 
     it "returns nil if the content type is *not* multipart/form-data" do
@@ -186,6 +190,7 @@ describe Hatty::Request do
       formdata = HTTP::FormData.build(io, "ILOVEHATTY") do |builder|
         file = IO::Memory.new("file contents")
         builder.file("upload", file, HTTP::FormData::FileMetadata.new(filename: "test.txt"))
+        builder.file("upload2", crystal_logo, HTTP::FormData::FileMetadata.new(filename: "crystal.jpg"))
       end
 
       headers = HTTP::Headers{"Content-Type" => "application/json"}
@@ -201,6 +206,7 @@ describe Hatty::Request do
       formdata = HTTP::FormData.build(io, "ILOVEHATTY") do |builder|
         file = IO::Memory.new("file contents")
         builder.file("upload", file, HTTP::FormData::FileMetadata.new(filename: "test.txt"))
+        builder.file("upload2", crystal_logo, HTTP::FormData::FileMetadata.new(filename: "crystal.jpg"))
       end
 
       headers = HTTP::Headers{"Content-Type" => "multipart/form-data; boundary=ILOVEHATTY"}
@@ -216,6 +222,7 @@ describe Hatty::Request do
       formdata = HTTP::FormData.build(io, "ILOVEHATTY") do |builder|
         file = IO::Memory.new("file contents")
         builder.file("upload", file, HTTP::FormData::FileMetadata.new(filename: "test.txt"))
+        builder.file("upload2", crystal_logo, HTTP::FormData::FileMetadata.new(filename: "crystal.jpg"))
       end
 
       headers = HTTP::Headers{"Content-Type" => "multipart/form-data; boundary=ILOVEHATTY"}
@@ -224,9 +231,11 @@ describe Hatty::Request do
 
       request.files.not_nil!["upload"].should be_a Tempfile
       request.files.not_nil!["upload"].should be_a Tempfile
-      request.files.not_nil!["upload"].should be_a Tempfile
+      request.files.not_nil!["upload2"].should be_a Tempfile
+      request.files.not_nil!["upload2"].should be_a Tempfile
 
       request.files.not_nil!["upload"].unlink
+      request.files.not_nil!["upload2"].unlink
     end
   end
 
