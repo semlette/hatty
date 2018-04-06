@@ -25,6 +25,10 @@ module Hatty
       @response.headers
     end
 
+    def cookies : HTTP::Cookies
+      @response.cookies
+    end
+
     # Sends the *response* "as-is" to the client.
     # ```
     # get "/" do |request, response|

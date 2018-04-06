@@ -25,6 +25,14 @@ describe Hatty::Request do
     end
   end
 
+  describe "#cookies" do
+    it "returns `#original#cookies`" do
+      http_request = create_request
+      request = Hatty::Request.new(http_request)
+      request.cookies.should be request.original.cookies
+    end
+  end
+
   describe "#body" do
     it "returns nil if there is no body" do
       post_request = create_request method: "POST"

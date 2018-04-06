@@ -65,6 +65,14 @@ describe Hatty::Response do
     end
   end
 
+  describe "#cookies" do
+    it "returns a `#original#cookies`" do
+      http_response = create_response
+      response = Hatty::Response.new(http_response)
+      response.cookies.should be response.original.cookies
+    end
+  end
+
   describe "#send" do
     # TODO: Test if the response is actually being sent
 

@@ -23,6 +23,10 @@ module Hatty
       @request.method
     end
 
+    def cookies : HTTP::Cookies
+      @request.cookies
+    end
+    
     def body : JSON::Any?
       is_json = @request.headers["Content-Type"]? === "application/json"
       if !@parsed_body && @request.body && is_json
