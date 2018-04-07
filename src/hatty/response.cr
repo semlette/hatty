@@ -120,6 +120,19 @@ module Hatty
       @sent = true
     end
 
+    def send_file(path : String, filename : String? = nil) : Nil
+      file = File.open(path)
+      send_file(file, filename)
+    end
+
+    def send_file(file : File, filename : String? = nil) : Nil
+      raise ExhaustedError.new if @sent
+      header = "attachment"
+      header += "; filename=\"#{filename}\"" unless !filename
+      @response.headers["Content-Disposition"] = header
+      send file.gets_to_end
+    end
+
     # NOTE: INTERNAL PROPERTY.
     # This property tells Hatty if it should forward the request
     # to a status handler.

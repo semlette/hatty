@@ -1,5 +1,7 @@
 require "./spec_helper"
 
+crystal_logo = File.open "./spec/crystal.jpg"
+
 describe Hatty::Response do
   context "`Hatty.config.disable_powered_by` is disabled" do
     it "adds `X-Powered-By` header" do
@@ -257,6 +259,94 @@ describe Hatty::Response do
       http_response = create_response
       response = Hatty::Response.new(http_response)
       response.redirect("/test").should eq nil
+    end
+  end
+
+  describe "#send_file(path, filename)" do  
+    context "with filename" do
+      it "sets the `Content-Disposition` header" do
+        http_response = create_response
+        response = Hatty::Response.new(http_response)
+        response.send_file("./spec/crystal.jpg", "logo.jpg")
+        response.headers["Content-Disposition"]?.should be_truthy
+        response.headers["Content-Disposition"]?.should eq "attachment; filename=\"logo.jpg\""
+      end
+    end
+
+    context "with no filename" do
+      it "sets the `Content-Disposition` header" do
+        http_response = create_response
+        response = Hatty::Response.new(http_response)
+        response.send_file("./spec/crystal.jpg")
+        response.headers["Content-Disposition"]?.should be_truthy
+        response.headers["Content-Disposition"]?.should eq "attachment"
+      end
+    end
+
+    it "raises if called more than once" do
+      expect_raises Hatty::Response::ExhaustedError do
+        http_response = create_response
+        response = Hatty::Response.new(http_response)
+        response.send_file("./spec/crystal.jpg")
+        response.send_file("./spec/crystal.jpg")
+      end
+    end
+
+    it "sets `#hatty_sent` to true" do
+      http_response = create_response
+      response = Hatty::Response.new(http_response)
+      response.send_file("./spec/crystal.jpg")
+      response.hatty_sent.should eq true
+    end
+
+    it "returns nil" do
+      http_response = create_response
+      response = Hatty::Response.new(http_response)
+      response.send_file("./spec/crystal.jpg").should eq nil
+    end
+  end
+  
+  describe "#send_file(file, filename)" do
+    context "with filename" do
+      it "sets the `Content-Disposition` header" do
+        http_response = create_response
+        response = Hatty::Response.new(http_response)
+        response.send_file(crystal_logo, "logo.jpg")
+        response.headers["Content-Disposition"]?.should be_truthy
+        response.headers["Content-Disposition"]?.should eq "attachment; filename=\"logo.jpg\""
+      end
+    end
+
+    context "with no filename" do
+      it "sets the `Content-Disposition` header" do
+        http_response = create_response
+        response = Hatty::Response.new(http_response)
+        response.send_file(crystal_logo)
+        response.headers["Content-Disposition"]?.should be_truthy
+        response.headers["Content-Disposition"]?.should eq "attachment"
+      end
+    end
+
+    it "raises if called more than once" do
+      expect_raises Hatty::Response::ExhaustedError do
+        http_response = create_response
+        response = Hatty::Response.new(http_response)
+        response.send_file(crystal_logo)
+        response.send_file(crystal_logo)
+      end
+    end
+
+    it "sets `#hatty_sent` to true" do
+      http_response = create_response
+      response = Hatty::Response.new(http_response)
+      response.send_file(crystal_logo)
+      response.hatty_sent.should eq true
+    end
+
+    it "returns nil" do
+      http_response = create_response
+      response = Hatty::Response.new(http_response)
+      response.send_file(crystal_logo).should eq nil
     end
   end
   
