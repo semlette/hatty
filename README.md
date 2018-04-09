@@ -2,19 +2,6 @@
 
 A library for creating HTTP services in Crystal
 
-## Read this
-
-This library is not ready for production use.
-
-1. It's missing a lot of methods (most of them can be replaced by manipulating `Request#original`, `Response#original`)
-
-### Things I want to add
-
-* Sessions
-* Rendering
-
----
-
 ```crystal
 require "hatty"
 
@@ -42,30 +29,25 @@ require "hatty"
 
 # Define handlers using `get`, `post`, `put`, `delete` and `patch`
 
-module MyApi
-  # Imaginary API
-  # ...
-end
-
 get "/users/:id" do |request, response|
-  user = MyApi.get_user by_id: request.params["id"]
+  user = get_user(request.params["id"])
   response.send_json({ data: user })
 end
 
 post "/users" do |request, response|
   name = response.body["name"]
-  new_user = MyApi.create_user(name)
+  age = response.body["age"]
+  new_user = create_user(name, age)
   response.send_json({ success: true, data: new_user })
 end
 
 delete "/users/:id" do |request, response|
   token = request.headers["Authorization"]?
-  is_admin = MyApi.is_admin?(token)
+  is_admin = is_admin?(token)
   if is_admin
-    MyApi.delete_user by_id: request.params["id"]
+    delete_user(request.params["id"])
     response.send_json({ "success" => true })
   else
-    # Send status 401 Unauthorized
     response.send_status 401
   end
 end
@@ -87,6 +69,8 @@ get "/" do |request, response|
   response.send_text "I am text/plain"
   response.send_json({ "content-type" => "application/json" })
   response.send_status 404
+  response.send_file("../images/logo.png", "our-logo.png")
+  response.redirect("/homepage")
 end
 ```
 

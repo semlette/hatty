@@ -41,8 +41,8 @@ module Hatty
       @sent = true
     end
 
-    # Sends the *response* as `application/json` to the client.
-    # NOTE: The *response* must have a `#to_json` method. Hatty automatically requires the JSON module which adds such method to `Hash`, `NamedTuple` and others.
+    # Sends the *json* as `application/json` to the client.
+    # NOTE: The *json* must have a `#to_json` method. Hatty automatically requires the JSON module which adds such method to `Hash`, `NamedTuple` and others.
     # ```
     # get "/" do |request, response|
     #   json = {hello: "world"}
@@ -58,7 +58,7 @@ module Hatty
       send jsonable.to_json
     end
 
-    # Sends the *response* as `application/json` to the client.
+    # Sends the *json* as `application/json` to the client.
     def send_json(json : String) : Nil
       @response.content_type = "application/json"
       send json

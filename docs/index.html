@@ -50,11 +50,6 @@
       
         <ul>
   
-  <li class=" " data-id="github.com/semlette/hatty/Hatty/Handlers/Logging" data-name="hatty::handlers::logging">
-      <a href="Hatty/Handlers/Logging.html">Logging</a>
-      
-    </li>
-  
   <li class=" " data-id="github.com/semlette/hatty/Hatty/Handlers/Routing" data-name="hatty::handlers::routing">
       <a href="Hatty/Handlers/Routing.html">Routing</a>
       
@@ -119,13 +114,7 @@
 
 <p>A library for creating HTTP services in Crystal</p>
 
-<blockquote>WORK IN PROGRESS. Please don't use this in production, it will probably break. I actually don't think it will, but I don't promise anything.</blockquote>
-
-<p>To-do</p>
-
-<ul><li><a href="https://github.com/semlette/hatty/tree/formdata" target="_blank">multipart/form-data support</a></li><li>websockets</li><li><a href="https://github.com/semlette/hatty/issues/new" target="_blank">Add suggestion</a></li></ul>
-
-<hr/><pre><code class='language-crystal'><span class="k">require</span> <span class="s">&quot;hatty&quot;</span>
+<pre><code class='language-crystal'><span class="k">require</span> <span class="s">&quot;hatty&quot;</span>
 
 get <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
   response.send_text <span class="s">&quot;Hello there!&quot;</span>
@@ -147,30 +136,25 @@ get <span class="s">&quot;/&quot;</span> <span class="k">do</span> <span class="
 
 <span class="c"># Define handlers using `get`, `post`, `put`, `delete` and `patch`</span>
 
-<span class="k">module</span> <span class="t">MyApi</span>
-  <span class="c"># Imaginary API</span>
-  <span class="c"># ...</span>
-<span class="k">end</span>
-
 get <span class="s">&quot;/users/:id&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
-  user <span class="o">=</span> <span class="t">MyApi</span>.get_user by_id: request.params[<span class="s">&quot;id&quot;</span>]
+  user <span class="o">=</span> get_user(request.params[<span class="s">&quot;id&quot;</span>])
   response.send_json({ data: user })
 <span class="k">end</span>
 
 post <span class="s">&quot;/users&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
   name <span class="o">=</span> response.body[<span class="s">&quot;name&quot;</span>]
-  new_user <span class="o">=</span> <span class="t">MyApi</span>.create_user(name)
+  age <span class="o">=</span> response.body[<span class="s">&quot;age&quot;</span>]
+  new_user <span class="o">=</span> create_user(name, age)
   response.send_json({ success: <span class="n">true</span>, data: new_user })
 <span class="k">end</span>
 
 delete <span class="s">&quot;/users/:id&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
   token <span class="o">=</span> request.headers[<span class="s">&quot;Authorization&quot;</span>]?
-  is_admin <span class="o">=</span> <span class="t">MyApi</span>.is_admin?(token)
+  is_admin <span class="o">=</span> is_admin?(token)
   <span class="k">if</span> is_admin
-    <span class="t">MyApi</span>.delete_user by_id: request.params[<span class="s">&quot;id&quot;</span>]
+    delete_user(request.params[<span class="s">&quot;id&quot;</span>])
     response.send_json({ <span class="s">&quot;success&quot;</span> => <span class="n">true</span> })
   <span class="k">else</span>
-    <span class="c"># Send status 401 Unauthorized</span>
     response.send_status <span class="n">401</span>
   <span class="k">end</span>
 <span class="k">end</span>
@@ -189,6 +173,8 @@ delete <span class="s">&quot;/users/:id&quot;</span> <span class="k">do</span> <
   response.send_text <span class="s">&quot;I am text/plain&quot;</span>
   response.send_json({ <span class="s">&quot;content-type&quot;</span> => <span class="s">&quot;application/json&quot;</span> })
   response.send_status <span class="n">404</span>
+  response.send_file(<span class="s">&quot;../images/logo.png&quot;</span>, <span class="s">&quot;our-logo.png&quot;</span>)
+  response.redirect(<span class="s">&quot;/homepage&quot;</span>)
 <span class="k">end</span></code></pre>
 
 <p><a href="https://semlette.github.io/hatty/Hatty/Response" target="_blank">API documentation for <code>Response</code></a></p>

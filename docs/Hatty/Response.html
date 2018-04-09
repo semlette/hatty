@@ -50,11 +50,6 @@
       
         <ul>
   
-  <li class=" " data-id="github.com/semlette/hatty/Hatty/Handlers/Logging" data-name="hatty::handlers::logging">
-      <a href="../Hatty/Handlers/Logging.html">Logging</a>
-      
-    </li>
-  
   <li class=" " data-id="github.com/semlette/hatty/Hatty/Handlers/Routing" data-name="hatty::handlers::routing">
       <a href="../Hatty/Handlers/Routing.html">Routing</a>
       
@@ -143,7 +138,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/response.cr#L2" target="_blank">hatty/response.cr</a>
+      <a href="https://github.com/semlette/hatty/blob/fc537d5777f280e8871e65d91ffa4270ae96a6d3/src/hatty/response.cr#L2" target="_blank">hatty/response.cr</a>
     
     <br/>
   
@@ -168,6 +163,11 @@
 
   <h2>Instance Method Summary</h2>
   <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#cookies%3AHTTP%3A%3ACookies-instance-method" class="signature"><strong>#cookies</strong> : HTTP::Cookies</a>
+        
+      </li>
     
       <li class="entry-summary">
         <a href="#hatty_send_status_code%3ABool-instance-method" class="signature"><strong>#hatty_send_status_code</strong> : Bool</a>
@@ -196,9 +196,26 @@
       </li>
     
       <li class="entry-summary">
+        <a href="#redirect%28tolocation%3AString%29%3ANil-instance-method" class="signature"><strong>#redirect</strong>(to location : String) : Nil</a>
+        
+          <div class="summary"><p>Redirects to <em>location</em>.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#send%28response%29%3ANil-instance-method" class="signature"><strong>#send</strong>(response) : Nil</a>
         
           <div class="summary"><p>Sends the <em>response</em> "as-is" to the client.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_file%28path%3AString%2Cfilename%3AString%3F%3Dnil%29%3ANil-instance-method" class="signature"><strong>#send_file</strong>(path : String, filename : String? = <span class="n">nil</span>) : Nil</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#send_file%28file%3AFile%2Cfilename%3AString%3F%3Dnil%29%3ANil-instance-method" class="signature"><strong>#send_file</strong>(file : File, filename : String? = <span class="n">nil</span>) : Nil</a>
         
       </li>
     
@@ -284,7 +301,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/response.cr#L3" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/fc537d5777f280e8871e65d91ffa4270ae96a6d3/src/hatty/response.cr#L3" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -295,6 +312,22 @@
 
 
   <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="cookies:HTTP::Cookies-instance-method">
+      <div class="signature">
+        
+        def <strong>cookies</strong> : HTTP::Cookies
+
+        <a class="method-permalink" href="#cookies%3AHTTP%3A%3ACookies-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/semlette/hatty/blob/fc537d5777f280e8871e65d91ffa4270ae96a6d3/src/hatty/response.cr#L28" target="_blank">View source</a>]
+        
+      </div>
+    </div>
   
     <div class="entry-detail" id="hatty_send_status_code:Bool-instance-method">
       <div class="signature">
@@ -311,7 +344,7 @@ to a status handler.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/response.cr#L108" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/fc537d5777f280e8871e65d91ffa4270ae96a6d3/src/hatty/response.cr#L139" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -330,7 +363,7 @@ This property tells Hatty if the response has been used.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/response.cr#L114" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/fc537d5777f280e8871e65d91ffa4270ae96a6d3/src/hatty/response.cr#L145" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -346,7 +379,7 @@ This property tells Hatty if the response has been used.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/response.cr#L24" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/fc537d5777f280e8871e65d91ffa4270ae96a6d3/src/hatty/response.cr#L24" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -364,7 +397,29 @@ This property tells Hatty if the response has been used.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/response.cr#L11" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/fc537d5777f280e8871e65d91ffa4270ae96a6d3/src/hatty/response.cr#L11" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="redirect(tolocation:String):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>redirect</strong>(to location : String) : Nil
+
+        <a class="method-permalink" href="#redirect%28tolocation%3AString%29%3ANil-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Redirects to <em>location</em>.</p>
+
+<pre><code>get <span class="s">&quot;/article/:id&quot;</span> <span class="k">do</span> <span class="o">|</span>request, response<span class="o">|</span>
+  response.redirect(<span class="s">&quot;/new-article-url/</span><span class="i">#{</span></span>request.params[<span class="s">&quot;id&quot;</span>]<span class="s"><span class="i">}</span>&quot;</span>)
+<span class="k">end</span></code></pre></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/semlette/hatty/blob/fc537d5777f280e8871e65d91ffa4270ae96a6d3/src/hatty/response.cr#L115" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -386,7 +441,39 @@ This property tells Hatty if the response has been used.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/response.cr#L34" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/fc537d5777f280e8871e65d91ffa4270ae96a6d3/src/hatty/response.cr#L38" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_file(path:String,filename:String?=nil):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>send_file</strong>(path : String, filename : String? = <span class="n">nil</span>) : Nil
+
+        <a class="method-permalink" href="#send_file%28path%3AString%2Cfilename%3AString%3F%3Dnil%29%3ANil-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/semlette/hatty/blob/fc537d5777f280e8871e65d91ffa4270ae96a6d3/src/hatty/response.cr#L123" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="send_file(file:File,filename:String?=nil):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>send_file</strong>(file : File, filename : String? = <span class="n">nil</span>) : Nil
+
+        <a class="method-permalink" href="#send_file%28file%3AFile%2Cfilename%3AString%3F%3Dnil%29%3ANil-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/semlette/hatty/blob/fc537d5777f280e8871e65d91ffa4270ae96a6d3/src/hatty/response.cr#L128" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -404,7 +491,7 @@ This property tells Hatty if the response has been used.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/response.cr#L58" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/fc537d5777f280e8871e65d91ffa4270ae96a6d3/src/hatty/response.cr#L62" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -433,7 +520,7 @@ This property tells Hatty if the response has been used.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/response.cr#L52" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/fc537d5777f280e8871e65d91ffa4270ae96a6d3/src/hatty/response.cr#L56" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -467,7 +554,7 @@ status <span class="n">401</span> <span class="k">do</span> <span class="o">|</s
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/response.cr#L97" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/fc537d5777f280e8871e65d91ffa4270ae96a6d3/src/hatty/response.cr#L101" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -493,7 +580,7 @@ status <span class="n">401</span> <span class="k">do</span> <span class="o">|</s
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/response.cr#L73" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/fc537d5777f280e8871e65d91ffa4270ae96a6d3/src/hatty/response.cr#L77" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -509,7 +596,7 @@ status <span class="n">401</span> <span class="k">do</span> <span class="o">|</s
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/response.cr#L15" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/fc537d5777f280e8871e65d91ffa4270ae96a6d3/src/hatty/response.cr#L15" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -525,7 +612,7 @@ status <span class="n">401</span> <span class="k">do</span> <span class="o">|</s
       <br/>
       <div>
         
-          [<a href="https://github.com/semlette/hatty/blob/003eb748345b7a278e289ffb463f367b6c27ca57/src/hatty/response.cr#L19" target="_blank">View source</a>]
+          [<a href="https://github.com/semlette/hatty/blob/fc537d5777f280e8871e65d91ffa4270ae96a6d3/src/hatty/response.cr#L19" target="_blank">View source</a>]
         
       </div>
     </div>
