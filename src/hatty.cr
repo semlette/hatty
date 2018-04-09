@@ -2,6 +2,7 @@ require "radix"
 require "json"
 require "http"
 require "tempfile"
+require "ecr"
 require "./hatty/*"
 require "./hatty/handlers/*"
 
