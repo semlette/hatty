@@ -19,13 +19,15 @@ module Hatty
       end
     end
 
-    @@tree = Radix::Tree(String).new
-    @@routes = Hash(String, Handler).new
-    @@statuses = Hash(Int32, Handler).new
-    @@global_status_handler : GlobalStatusHandler = ->(code : Int32, request : Request, response : Response) {
+    DEFAULT_STATUS_HANDLER = ->(code : Int32, request : Request, response : Response) {
       html = Renderer.new(request, response).to_s
       response.send html
     }
+
+    @@tree = Radix::Tree(String).new
+    @@routes = Hash(String, Handler).new
+    @@statuses = Hash(Int32, Handler).new
+    @@global_status_handler : GlobalStatusHandler = DEFAULT_STATUS_HANDLER
 
     def add_route(method, path, handler)
       combined = combine method, path
@@ -90,7 +92,7 @@ module Hatty
       @@tree = Radix::Tree(String).new
       @@routes.clear
       @@statuses.clear
-      @@global_status_handler = nil
+      @@global_status_handler = DEFAULT_STATUS_HANDLER
     end
 
     module StatusTexts
