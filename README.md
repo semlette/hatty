@@ -1,3 +1,7 @@
+Hi, this library is not being maintained anymore since I no longer use crystal.
+
+The library works very well, the only part I can think of not working 100% (more like 80% perhaps) is `multi-part/formdata` requests. The last working version was against Crystal 0.24.x
+
 # Hatty [![CircleCI](https://circleci.com/gh/semlette/hatty.svg?style=svg)](https://circleci.com/gh/semlette/hatty)
 
 A library for creating HTTP services in Crystal
